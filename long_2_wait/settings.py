@@ -77,8 +77,12 @@ WSGI_APPLICATION = 'long_2_wait.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'mysql.connector.django',
+        'NAME': 'long_2_wait',
+        'USER': 'root',
+        'PASSWORD': 'BlaCK_KnigHT',
+        'HOST': '127.0.0.1',
+        'PORT' : '3306'
     }
 }
 

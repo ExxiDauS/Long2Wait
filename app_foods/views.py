@@ -2,8 +2,6 @@ from django.shortcuts import render
 from django.http.response import HttpResponse
 
 # Create your views here.
-def menu(request):
-    return HttpResponse('menu')
+def test(request):
+    return render(request, 'app_foods/test.html')
 
-def cart(request, cart_id):
-    return HttpResponse('In cart ID = ' + str(cart_id))
