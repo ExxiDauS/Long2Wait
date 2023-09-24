@@ -76,13 +76,12 @@ WSGI_APPLICATION = 'project_l2w.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.mysql',
-        # 'NAME': 'Long_2_Wait',
-        # 'USER': 'long2wait_db',
-        # 'PASSWORD': '34KfWa8ZU19v9M9UqN665191',
-        # 'HOST': '161.246.127.24',
-        # 'PORT': '9078',
-        "ENGINE": "django.db.backends.sqlite3",
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'test',
+        'USER': 'clmxa7jxb0014bsmna3he4x78',
+        'PASSWORD': '2TfWodXFtHMIkmofmjNoWguz',
+        'HOST': '161.246.127.24',
+        'PORT': '9004',
     }
 }
 
