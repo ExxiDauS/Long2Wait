@@ -75,5 +75,3 @@ pip-delete-this-directory.txt
 
 # Database
 database.db
-
-settings.py
