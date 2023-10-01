@@ -15,7 +15,6 @@ body
     min-height: 100vh;
     background: var(--clr);
 }
-
 .navbar
 {
     position: absolute;
@@ -24,13 +23,11 @@ body
     background: #1F3A62;
     padding-left: 10px;
 }
-
 .navbar ul
 {
     position: relative;
     height: 100vh;
 }
-
 .navbar ul li
 {
     position: relative;
@@ -39,7 +36,6 @@ body
     height: 70px;
     z-index: 1;
 }
-
 .navbar ul li a
 {
     position: relative;
@@ -47,7 +43,6 @@ body
     white-space: nowrap;
     text-decoration: none;
 }
-
 .navbar ul li a .icon
 {
     position: relative;
@@ -60,7 +55,6 @@ body
     color: var(--clr);
     transition: 0.5s;
 }
-
 .navbar ul li:hover a .icon
 {
   transform: translateX(30px);
