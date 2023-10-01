@@ -1,9 +1,10 @@
 <!-- code here -->
-{% extends "app_general/nk_dev/first.html" %}
+{% extends "app_general/tn_dev/customer_base.html" %}
 {% block title %}
 Long2Wait
 {% endblock title %}
 
 {% block body %}
-    <a href="{% url 'customer' %}">customer</a>
+    <a href="{% url 'shop' %}">shop</a>
+    <h1> {{amount__sum}} </h1>
 {% endblock body %}

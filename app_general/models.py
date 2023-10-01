@@ -1,9 +1,12 @@
 from django.db import models
 
 # Create your models here.
+#TODO: class Users(models.Model):
+
 class Reservation(models.Model):
     total_price = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
+    order = models.ForeignKey("app_general.Orders", on_delete=models.SET_NULL, null=True)
 
 class Foods(models.Model):
     foods_name = models.CharField(max_length=255)
