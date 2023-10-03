@@ -1,15 +1,11 @@
-{%load static%}
+{% extends "app_general/components/base.html" %}
+{% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}{% endblock title %}</title>
-    <link rel="stylesheet" href="{% static 'app_general/normalize.css' %}">
-    <link rel="stylesheet" href="{% static 'app_general/first.css' %}">
-</head>
-<body>
+{% block title %}
+TEST
+{% endblock title %}
+
+{% block body%}
     <!--  log in --> 
  <div class="box" >
     <div class="box-1">
@@ -23,7 +19,6 @@
             <div class="2" > ลงทะเบียน </div>
       </div>
     </div>
+</div> 
+{% endblock body%}
 
-</div>
-</body>
-</html>

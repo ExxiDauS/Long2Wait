@@ -11,11 +11,11 @@ def landing(request):
 
 # Login page
 def login(request):
-    return render(request, 'app_general/login.html')
+    return render(request, 'app_general/nk_dev/login.html')
 
 # Register page
 def register(request):
-    return render(request, 'app_general/register.html')
+    return render(request, 'app_general/nk_dev/regis.html')
 
 # * General 
 # Home page if haven't login yet redirect to landing

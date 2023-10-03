@@ -9,8 +9,11 @@ class Reservation(models.Model):
     order = models.ForeignKey("app_general.Orders", on_delete=models.SET_NULL, null=True)
 
 class Foods(models.Model):
-    foods_name = models.CharField(max_length=255)
+    foods_name = models.CharField(max_length=100)
     price = models.IntegerField()
+    
+    # def __str__(self) -> str:
+    #     return '{} (id={})'.format(self.foods_name, self.id)
 
 class Orders(models.Model):
     foods = models.ForeignKey('app_general.Foods', on_delete=models.SET_NULL, null=True)
