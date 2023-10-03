@@ -75,3 +75,6 @@ pip-delete-this-directory.txt
 
 # Database
 database.db
+
+# node
+node_modules/
