@@ -7,7 +7,7 @@ from django.db.models import Sum
 # * Landing + Signin (Users)
 # Landing page
 def landing(request):
-    return render(request, 'app_general/landing.html')
+    return render(request, 'app_general/nk_dev/landing.html')
 
 # Login page
 def login(request):
