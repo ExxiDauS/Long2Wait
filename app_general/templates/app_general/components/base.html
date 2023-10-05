@@ -4,8 +4,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% tailwind_css %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'app_general/favicon.ico' %}">
     <link rel="stylesheet" href="{% static 'app_general/normalize.css' %}">
     <link rel="stylesheet" href="{% static 'app_general/stylesheet.css' %}">
     <title>{% block title %}{% endblock title %}</title>
