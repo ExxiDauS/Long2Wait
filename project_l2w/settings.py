@@ -47,10 +47,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app_general.apps.AppGeneralConfig',
-    'app_users.apps.AppUsersConfig',
-    'tailwind',
-    'theme',
-    'django_browser_reload',
 ]
 
 MIDDLEWARE = [
@@ -61,7 +57,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    "django_browser_reload.middleware.BrowserReloadMiddleware",
 ]
 
 ROOT_URLCONF = 'project_l2w.urls'
@@ -69,7 +64,7 @@ ROOT_URLCONF = 'project_l2w.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [ BASE_DIR / "templates"],
+        'DIRS': [ BASE_DIR / 'app_general' / 'templates' ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -138,19 +133,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-]
-
-STATIC_ROOT = BASE_DIR.parent / "local_cdn" / "static"
-
+STATIC_ROOT = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# TailwindCSS
-TAILWIND_APP_NAME = 'theme'
+# # TailwindCSS
 
 NPM_BIN_PATH = "C:/Program Files/nodejs/npm.cmd"

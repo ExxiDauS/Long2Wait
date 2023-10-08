@@ -1,24 +1,10 @@
-{% extends "app_general/components/base.html" %}
-{% load static %}
+{% extends "app_general/base.html" %} {% load static %} {% block body%}
+<!--  log in -->
 
-{% block title %}
-TEST
-{% endblock title %}
+<div class="relative w-full min-h-screen">
+  <div class="flex bg-cover bg-center h-screen">
+    <img src="{% static 'src/BG.png'%}" alt="BG" class="object-cover" />
+  </div>
+</div>
 
-{% block body%}
-    <!--  log in --> 
- <div class="box" >
-    <div class="box-1">
-        <img class="logo" src="{%static 'app_general/src/Logo.png'%}" />
-    </div>
-    <div class="box-2">
-        <div class="frame-5" >
-            <div class="" > เข้าสู่ระบบ </div>
-      </div>
-      <div class="frame-6" >
-            <div class="2" > ลงทะเบียน </div>
-      </div>
-    </div>
-</div> 
 {% endblock body%}
-
