@@ -24,13 +24,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = 'django-insecure-p^6ht_i*)4_c)i&@$h%%6aui+g$68mcyr50wa(xj2j&env3aq='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG') == 'True'
+DEBUG = 'True'
 
-production_host = os.getenv('PRODUCTION_HOST')
-ALLOWED_HOSTS = [production_host] if production_host is not None else []
+ALLOWED_HOSTS = []
 
 # INTERNAL_IPS
 INTERNAL_IPS = [
@@ -86,11 +85,11 @@ WSGI_APPLICATION = 'project_l2w.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv("DB_USER"),
-        'PASSWORD': os.getenv("DB_PASSWORD"),
-        'HOST': os.getenv("DB_HOST"),
-        'PORT': os.getenv("DB_PORT"),
+        'NAME': 'test',
+        'USER': 'clmxa7jxb0014bsmna3he4x78',
+        'PASSWORD': '2TfWodXFtHMIkmofmjNoWguz',
+        'HOST': '161.246.127.24',
+        'PORT': '9004',
         'OPTIONS': {
             'charset': 'utf8mb4',
     }
