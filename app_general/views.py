@@ -20,8 +20,8 @@ def register(request):
 # * General 
 # Home page if haven't login yet redirect to landing
 def home(request):
-    time = Orders.objects.filter(amount__isnull=True).aggregate(Sum('amount'))
-    return render(request, 'app_general/home.html', time)
+    # time = Orders.objects.filter(amount__isnull=True).aggregate(Sum('amount'))
+    return render(request, 'app_general/tn_dev/home.html')
 
 # Shop for customer to buy
 def shop(request):
