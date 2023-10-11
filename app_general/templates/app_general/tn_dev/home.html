@@ -1,1 +1,18 @@
-{% extends "app_general/base.html" %} {% load static %} {% block body%}
+{% extends "app_general/base.html" %} {% load static %}
+
+{% block home_body %}
+<div class="sidebar fixed top-0 bottom-0 lg:left-0 p-2 w-[70px] overflow-y-auto text-center bg-[#1F3A62]">
+    <div class="text-[#DAC0A3]">
+        <div class="p-2.5 mt-3 flex items-center px-4">
+            <i class="text-[1.5rem]"><iconify-icon icon="ion:person"></iconify-icon></i>
+            <div class="rounded-full border-solid border-[6px] h-12 w-12 bg-[#1F3A62]"></div>
+        </div>
+        <div class="p-2.5 mt-3 flex items-center px-4">
+            <i class="text-[1.5rem]"><iconify-icon icon="ion:home"></iconify-icon></i>
+        </div>
+        <div class="p-2.5 mt-3 flex items-center px-4">
+            <i class="text-[1.5rem]"><iconify-icon icon="ion:receipt"></iconify-icon></i>
+        </div>
+    </div>
+</div>
+{% endblock home_body %}
