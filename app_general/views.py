@@ -38,7 +38,7 @@ def history(request):
 # * Profile settings
 # Main profile page
 def profile(request):
-    return render(request, 'app_general/profile.html')
+    return render(request, 'app_general/tn_dev/profile.html')
 
 # Edit profile
 def editprofile(request):
