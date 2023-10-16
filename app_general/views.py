@@ -11,7 +11,7 @@ def landing(request):
 
 # Login page
 def login(request):
-    return render(request, 'app_general/nk_dev/login.html')
+    return render(request, 'registration/login.html')
 
 # Register page
 def register(request):
