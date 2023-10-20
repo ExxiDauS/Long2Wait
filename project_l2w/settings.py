@@ -139,6 +139,11 @@ STATIC_ROOT = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# # TailwindCSS
+# TailwindCSS
 
 NPM_BIN_PATH = "C:/Program Files/nodejs/npm.cmd"
+
+# Auth
+
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'landing'
