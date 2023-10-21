@@ -6,6 +6,9 @@
         <form action="{% url 'login' %}" method="post">
             {% csrf_token %}
             {{ form.as_p }}
+            {% if request.GET.next %}
+                <input type="hidden" name="next" value="{{request.GET.next}}">
+            {% endif %}
             <p>
                 <button class="border-0 w-2/5 h-10 bg-green-400 font-medium" type="submit"> Login </button>
             </p>

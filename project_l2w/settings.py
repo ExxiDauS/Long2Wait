@@ -39,13 +39,13 @@ INTERNAL_IPS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'app_general.apps.AppGeneralConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app_general.apps.AppGeneralConfig',
 ]
 
 MIDDLEWARE = [
