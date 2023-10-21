@@ -2,6 +2,7 @@
 
 {% load static %} {% block body%}
 <!--  log in -->
+<body class="flex items-center justify-center h-screen bg-[url('{% static 'src\sign-in.svg' %}')] bg-no-repeat bg-cover">
     <div className="flex flex-row items-center justify-center w-full">
         <form action="{% url 'login' %}" method="post">
             {% csrf_token %}
@@ -11,4 +12,5 @@
             </p>
         </form>
     </div>
+</body>
 {% endblock body%}

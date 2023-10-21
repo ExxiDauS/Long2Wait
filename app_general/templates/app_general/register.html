@@ -2,33 +2,117 @@
 
 {% load static %} {% block body%}
 <!--  log in -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
+<body class="flex items-center justify-center h-screen bg-[url('{% static 'src\sign-in.svg' %}')] bg-no-repeat bg-cover">
     <div className="flex flex-col w-full items-center justify-center py-8">
         <form action="{% url 'register' %}" method="post" class="flex flex-col items-center justify-center w-full">
             {% csrf_token %}
             {{form.non_field_errors}}
-            <div class="flex flex-col w-3/5  text-black-400 mt-8 text-sm items-center">
+
+            <div class="Ellipse79 w-[120px] h-[120px] bg-zinc-300 rounded-full"></div>
+
+            <div class=" text-center text-blue-950 text-[25px] font-bold font-['Prompt'] uppercase">ลงทะเบียน</div>
+            
+            <!-- บัญชีผู้ใช้ -->
+            <div class="mb-4">
+                <label
+                  for="Username"
+                  class="mb-1 block font-['Prompt'] text-base text-[#0F2C59]"
+                > บัญชีผู้ใช้ </label>
+                <input
+                type="text"
+                placeholder="Username"
+                class="w-[500px] rounded-md placeholder-[#DFB17E] bg-[#EADBC8] py-3 px-6 text-base font-['Prompt'] text-[#0F2C59] outline-none focus:border-[#6A64F1] focus:shadow-md"
+              />
+              <!-- <div class="flex flex-col w-3/5  text-black-400 mt-8 text-sm items-center">
                 {{form.username.label_tag}}
                 {{form.username}}
                 {{form.username.errors}}
+            </div> -->
             </div>
-            <div class="flex flex-col w-3/5  text-black-400 mt-8 text-sm items-center">
+
+
+            <!-- ชื่อเล่น -->
+            <div class="mb-4">
+                <label
+                  for="Display Name"
+                  class="mb-1 block font-['Prompt'] text-base text-[#0F2C59]"
+                > ชื่อเล่น </label>
+                <input
+                type="text"
+                placeholder="Display Name"
+                class="w-[500px] rounded-md placeholder-[#DFB17E] bg-[#EADBC8] py-3 px-6 text-base font-['Prompt'] text-[#0F2C59] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                />
+            </div>
+
+
+            <!-- อีเมล -->
+            <div class="mb-4">
+                <label
+                  for="email"
+                  class="mb-1 block font-['Prompt'] text-base text-[#07074D]"
+                >
+                  อีเมล
+                </label>
+                <input
+                  type="email"
+                  placeholder="example@mail.com"
+                  class="w-[500px] rounded-md placeholder-[#DFB17E] bg-[#EADBC8] py-3 px-6 text-base font-['Prompt'] text-[#0F2C59] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                  />
+                <!-- <div class="flex flex-col w-3/5  text-black-400 mt-8 text-sm items-center">
                 {{form.email.label_tag}}
                 {{form.email}}
                 {{form.email.errors}}
-            </div>
-            <div class="flex flex-col w-3/5  text-black-400 mt-8 text-sm items-center">
+            </div> -->
+              </div>
+
+            <!-- รหัสผ่าน -->
+            <div class="mb-4">
+                <label
+                  for="Password"
+                  class="mb-1 block font-['Prompt'] text-base text-[#0F2C59]"
+                > รหัสผ่าน </label>
+                <input
+                type="password"
+                placeholder="Password"
+                class="w-[500px] rounded-md placeholder-[#DFB17E] bg-[#EADBC8] py-3 px-6 text-base font-['Prompt'] text-[#0F2C59] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                />
+              <!-- <div class="flex flex-col w-3/5  text-black-400 mt-8 text-sm items-center">
                 {{form.password1.label_tag}}
                 {{form.password1}}
                 {{form.password1.errors}}
+            </div> -->
             </div>
-            <div class="flex flex-col w-3/5  text-black-400 mt-8 text-sm items-center">
+            
+
+            <!-- ยืนยันรหัสผ่าน -->
+            <div class="mb-4">
+                <label
+                  for="Confirm Password"
+                  class="mb-1 block font-['Prompt'] text-base text-[#0F2C59]"
+                > ยืนยันรหัสผ่าน </label>
+                <input
+                type="password"
+                placeholder="Confirm Password"
+                class="w-[500px] rounded-md placeholder-[#DFB17E] bg-[#EADBC8] py-3 px-6 text-base font-['Prompt'] text-[#0F2C59] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                />
+              <!-- <div class="flex flex-col w-3/5  text-black-400 mt-8 text-sm items-center">
                 {{form.password2.label_tag}}
                 {{form.password2}}
                 {{form.password2.errors}}
+            </div> -->
             </div>
-            <p>
-                <button class="border-0 w-full h-10 bg-green-400 font-medium mt-10" type="submit"> Register </button>
-            </p>
+            <div>
+                <button
+                  class="hover:shadow-form rounded-md bg-[#0F2C59] w-[217px] h-[57px] px-[23px] py-[7px] text-base font-semibold text-[#EADBC8] outline-none font-['Prompt']"
+                >
+                ยืนยันการลงทะเบียน
+                </button>
+              </div>
         </form>
     </div>
+</body>
+
 {% endblock body%}
