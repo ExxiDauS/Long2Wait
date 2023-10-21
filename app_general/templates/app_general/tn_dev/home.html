@@ -283,43 +283,45 @@
 
             
 
-            <div class="block justify-center items-center h-screen">
+            <div class="inline-block justify-center items-center h-screen">
                 <div class="flex justify-center items-center m-4 mt-16">
-                    <img class="w-60 h-60" src="{% static '/src/Logo.png' %}">
+                    <a href="{% url 'home' %}">
+                        <img class="w-60 h-60" src="{% static '/src/Logo.png' %}">
+                    </a>
                 </div>
-                <div class="flex justify-center items-center snap-x-center space-x-4 mt-8">
-                    <div class="flex-shrink-0 w-64 p-4 sm:hidden sm:w-16">
-                        <div class="flex-shrink-0 w-64 h-96 p-4 bg-white border rounded-full overflow-hidden shadow-md">
-                            <img src="card-image.jpg" alt="Card Image" class="w-full h-40 object-cover">
-                            <div class="mt-4">
+                <div class="flex content justify-center items-center overscroll-x-auto space-x-12 mt-8">
+                    <div class="flex-shrink-0 w-64 h-96 p-4">
+                        <div class="flex-shrink-0 w-64 h-96 p-4 bg-white border-[16px] border-[#6783A6] rounded-full overflow-hidden shadow-md hover:scale-125 hover:border-[#403F53] duration-300">
+                            <img src="{% static '/src/พี่ช้าง.png' %}" class="w-full h-22 object-cover">
+                            <div class="mt-4 text-center">
                                 <h2 class="text-xl font-semibold">พี่ช้าง</h2>
                                 <p class="text-gray-600">Card description goes here.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="flex-shrink-0 w-64 p-4">
-                        <div class="flex-shrink-0 w-64 h-96 p-4 bg-white border rounded-full overflow-hidden shadow-md">
-                            <img src="card-image.jpg" alt="Card Image" class="w-full h-40 object-cover">
-                            <div class="mt-4">
-                                <h2 class="text-xl font-semibold">ป้าเล็ก</h2>
+                    <div class="flex-shrink-0 w-64 h-96 p-4">
+                        <div class="flex-shrink-0 w-64 h-96 p-4 bg-white border-[16px] border-[#6783A6] rounded-full overflow-hidden shadow-md hover:scale-125 hover:border-[#403F53] duration-300">
+                            <img src="{% static '/src/พี่ฝน.png' %}" alt="Card Image" class="w-full h-22 object-cover">
+                            <div class="mt-4 text-center">
+                                <h2 class="text-xl font-semibold">พี่ฝน</h2>
                                 <p class="text-gray-600">Card description goes here.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="flex-shrink-0 w-64 p-4">
-                        <div class="flex-shrink-0 w-64 h-96 p-4 bg-white border rounded-full overflow-hidden shadow-md">
-                            <img src="card-image.jpg" alt="Card Image" class="w-full h-40 object-cover">
-                            <div class="mt-4">
+                    <div class="flex-shrink-0 w-64 h-96 p-4">
+                        <div class="flex-shrink-0 w-64 h-96 p-4 bg-white border-[16px] border-[#6783A6] rounded-full overflow-hidden shadow-md  hover:scale-125 hover:border-[#403F53] duration-300">
+                            <img src="{% static '/src/วาสนา.png' %}" alt="Card Image" class="w-full h-22 object-cover">
+                            <div class="mt-4 text-center">
                                 <h2 class="text-xl font-semibold">วาสนา</h2>
                                 <p class="text-gray-600">Card description goes here.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="flex-shrink-0 w-64 p-4">
-                        <div class="flex-shrink-0 w-64 h-96 p-4 bg-white border rounded-full overflow-hidden shadow-md">
-                            <img src="card-image.jpg" alt="Card Image" class="w-full h-40 object-cover">
-                            <div class="mt-4">
-                                <h2 class="text-xl font-semibold">น้องพลอย</h2>
+                    <div class="flex-shrink-0 w-64 h-96 p-4">
+                        <div class="flex-shrink-0 w-64 h-96 p-4 bg-white border-[16px] border-[#6783A6] rounded-full overflow-hidden shadow-md  hover:scale-125 hover:border-[#403F53] duration-300">
+                            <img src="{% static '/src/มะระ.png' %}" alt="Card Image" class="w-full h-22 object-cover">
+                            <div class="mt-4 text-center">
+                                <h2 class="text-xl font-semibold">ก๋วยเตี๋ยวไก่มะระ</h2>
                                 <p class="text-gray-600">Card description goes here.</p>
                             </div>
                         </div>
