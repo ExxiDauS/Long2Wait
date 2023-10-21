@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from .models import Foods, Reservation, Orders
-from django.db.models import Sum
+from app_general.forms import RegisterForm
+from django.contrib.auth import login as auth_login
+from django.http import HttpRequest, HttpResponseRedirect
+from django.urls import reverse
 
 # Create your views here.
 
@@ -11,11 +14,23 @@ def landing(request):
 
 # Login page
 def login(request):
-    return render(request, 'app_general/nk_dev/login.html')
+    return render(request, 'registration/login.html')
 
 # Register page
-def register(request):
-    return render(request, 'app_general/nk_dev/regis.html')
+def register(request: HttpRequest):
+    # Post
+    if request.method == "POST":
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            auth_login(request, user)
+            return HttpResponseRedirect(reverse("home"))
+    else:
+        form = RegisterForm()
+
+    # Get
+    context = {"form": form}
+    return render(request, "app_general/register.html", context)
 
 # * General 
 # Home page if haven't login yet redirect to landing
@@ -35,10 +50,10 @@ def cart(request):
 def history(request):
     return render(request, 'app_general/history.html')
 
-# * Profile settings
+# * Dashboard settings
 # Main profile page
-def profile(request):
-    return render(request, 'app_general/profile.html')
+def dashboard(request):
+    return render(request, 'app_general/dashboard.html')
 
 # Edit profile
 def editprofile(request):
