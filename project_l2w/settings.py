@@ -46,6 +46,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'app_general.apps.AppGeneralConfig',
+    'crispy_forms',
+    "crispy_tailwind",
 ]
 
 MIDDLEWARE = [
@@ -147,3 +150,8 @@ NPM_BIN_PATH = "C:/Program Files/nodejs/npm.cmd"
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'landing'
+
+# Crispy Forms
+CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
+
+CRISPY_TEMPLATE_PACK = "tailwind"

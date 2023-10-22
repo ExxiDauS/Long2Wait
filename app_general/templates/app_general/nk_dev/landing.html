@@ -1,9 +1,41 @@
 {% extends "app_general/base.html" %} {% load static %} {% block body%}
-<!--  log in -->
+<!--  logo page -->
 
-<div class="flex flex-row w-full min-h-screen">
-  <a href="{% url 'login' %}" class="rounded text-center w-1/12 h-full bg-blue-700 text-white"> เข้าสู่ระบบ </a>
-  <a href="{% url 'register' %}" class="rounded text-center w-1/12 h-full bg-transparent text-[#0F2C59] outline outline-1 outline-[#0F2C59]"> ลงทะเบียน </a>
-</div>
+<body
+  class="flex items-center justify-center h-screen bg-[url('{% static 'src\sign-in.svg' %}')] bg-no-repeat bg-cover"
+>
+  <div class="text-center">
+    <img
+      src="{% static 'src/Logo.png' %}"
+      alt="โลโก้"
+      class="mx-auto w-2/6 mb-14"
+    />
+    <!-- ปุ่มเข้าสู่ระบบ -->
+    <div
+      class="w-[264px] h-[68px] px-3.5 py-1.5 bg-blue-950 rounded-[50px] justify-center items-center gap-2.5 inline-flex"
+    >
+      <div>
+        <a
+          href="login"
+          class="text-center text-stone-300 text-xl font-semibold font-['Kanit']"
+          >เข้าสู่ระบบ</a
+        >
+      </div>
+    </div>
+
+    <!-- ปุ่มลงทะเบียน -->
+    <div
+      class="w-[264px] h-[68px] px-3.5 py-1.5 rounded-[50px] shadow border-2 border-blue-950 justify-center items-center gap-2.5 inline-flex"
+    >
+      <div>
+        <a
+          href="register"
+          class="text-center text-blue-950 text-xl font-bold font-['Kanit']"
+          >ลงทะเบียน</a
+        >
+      </div>
+    </div>
+  </div>
+</body>
 
 {% endblock body%}

@@ -1,17 +1,70 @@
-{% extends "app_general/base.html" %}
-
-{% load static %} {% block body%}
+{% extends "app_general/base.html" %} {% load static %}
+<!-- {% load crispy_forms_tags %}
+{% load tailwind_filters %} -->
+{% block body%}
 <!--  log in -->
-    <div className="flex flex-row items-center justify-center w-full">
-        <form action="{% url 'login' %}" method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            {% if request.GET.next %}
-                <input type="hidden" name="next" value="{{request.GET.next}}">
-            {% endif %}
-            <p>
-                <button class="border-0 w-2/5 h-10 bg-green-400 font-medium" type="submit"> Login </button>
-            </p>
-        </form>
-    </div>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Prompt&display=swap"
+  rel="stylesheet"
+/>
+
+<body
+  class="flex items-center justify-center h-screen bg-[url('{% static 'src\sign-in.svg' %}')] bg-no-repeat bg-cover"
+>
+  <div className="flex flex-col w-full items-center justify-center py-8">
+    <form action="{% url 'login' %}" method="post">
+      {% csrf_token %} {% if request.GET.next %}
+      <input type="hidden" name="next" value="{{request.GET.next}}" />
+      {% endif %} {{form}}
+      <!-- logo -->
+      <img
+        src="{% static 'src/Logo.png' %}"
+        alt="โลโก้"
+        class="mx-auto w-2/6 mb-14"
+      />
+
+      <div class="grid grid-rows-3 justify-center">
+        <!-- บัญชีผู้ใช้ -->
+        <div class="mb-4">
+          <label
+            for="Username"
+            class="mb-1 block font-['Prompt'] text-base text-[#0F2C59]"
+          >
+            บัญชีผู้ใช้
+          </label>
+          <input
+            type="text"
+            placeholder="Username"
+            class="w-[500px] rounded-md placeholder-[#DFB17E] bg-[#EADBC8] py-3 px-6 text-base font-['Prompt'] text-[#0F2C59] outline-none focus:border-[#6A64F1] focus:shadow-md"
+          />
+        </div>
+        <!-- รหัสผ่าน -->
+        <div class="mb-4">
+          <label
+            for="Password"
+            class="mb-1 block font-['Prompt'] text-base text-[#0F2C59]"
+          >
+            รหัสผ่าน
+          </label>
+          <input
+            type="password"
+            placeholder="Password"
+            class="w-[500px] rounded-md placeholder-[#DFB17E] bg-[#EADBC8] py-3 px-6 text-base font-['Prompt'] text-[#0F2C59] outline-none focus:border-[#6A64F1] focus:shadow-md"
+          />
+          <!-- {{ form|crispy }} -->
+        </div>
+        <div class="flex justify-center">
+          <button
+            class="hover:shadow-form rounded-md bg-[#0F2C59] w-[200px] h-[59px] px-[23px] py-[7px] text-base font-semibold text-[#EADBC8] outline-none font-['Prompt']"
+            type="submit"
+          >
+            เข้าสู่ระบบ
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</body>
 {% endblock body%}
