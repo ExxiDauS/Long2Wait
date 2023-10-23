@@ -6,6 +6,8 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpRequest, HttpResponseRedirect
 from django.urls import reverse
 from .forms import UserProfileForm, ExtendedProfileForm
+from django.http import JsonResponse
+import json
 
 # Create your views here.
 
@@ -47,13 +49,58 @@ def home(request):
 
 # Shop for customer to buy
 def shop(request):
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = Orders.objects.get_or_create(customer=customer, completed=False)
+        items = order.orderitem_set.all()
+        cartItems = order.get_cart_items
+    else:
+        items = []
+        order = {'get_cart_total': 0, 'get_cart_items': 0}
+        cartItems = order['get_cart_items']
+
     foods = Foods.objects.all()
-    context = {'foods': foods}
-    return render(request, 'app_general/customer_page1.html', context)
+    context = {'foods': foods, 'cartItems': cartItems}
+    return render(request, 'app_general/shop.html', context)
 
 # Cart page
+@login_required
 def cart(request):
-    return render(request, 'app_general/cart.html')
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = Orders.objects.get_or_create(customer=customer, completed=False)
+        items = order.orderitem_set.all()
+    else:
+        items = []
+        order = {'get_cart_total': 0, 'get_cart_items': 0}
+    context = {'items': items, 'order': order}
+    return render(request, 'app_general/cart.html', context)
+
+def updateItem(request):
+    data = json.loads(request.body)
+    productId = data['productId']
+    action = data['action']
+
+    print("Action: ", action)
+    print("Product: ", productId)
+
+    customer = request.user.customer
+    product = Foods.objects.get(id=productId)
+    order, created = Orders.objects.get_or_create(customer=customer, completed=False)
+
+    orderItem, created = OrderItem.objects.get_or_create(order=order, foods=product)
+
+    if action == 'add':
+        orderItem.quantity = (orderItem.quantity + 1)
+    elif action == 'remove':
+        orderItem.quantity = (orderItem.quantity - 1)
+    
+    orderItem.save()
+
+    if orderItem.quantity <= 0:
+        orderItem.delete()
+
+    return JsonResponse('Item was added', safe=False)
 
 # History page
 def history(request):
@@ -107,3 +154,4 @@ def profile(request: HttpRequest):
         "extended_profile": extended_profile
     }
     return render(request, 'app_genearal/profile.html', context)
+    
