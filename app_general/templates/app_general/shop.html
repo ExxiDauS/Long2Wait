@@ -1,5 +1,6 @@
-{% extends "app_general/base.html" %} {% load static %} {% block body%} {% for
-food in foods %}
+{% extends "app_general/base.html" %} {% load static %} 
+{% block body%} 
+{% for food in foods %}
 <div>
   <img src="{{food.imageURL}}" />
   <h6><strong>{{food.foods_name}}</strong></h6>
@@ -10,4 +11,5 @@ food in foods %}
     Add to cart
   </button>
 </div>
-{% endfor %} {% endblock body%}
+{% endfor %} 
+{% endblock body%}
