@@ -1,6 +1,13 @@
 from django.shortcuts import render
-from .models import Foods, Reservation, Orders
-from django.db.models import Sum
+from .models import *
+from app_general.forms import RegisterForm
+from django.contrib.auth import login as auth_login
+from django.contrib.auth.decorators import login_required
+from django.http import HttpRequest, HttpResponseRedirect
+from django.urls import reverse
+from .forms import UserProfileForm, ExtendedProfileForm
+from django.http import JsonResponse
+import json
 
 # Create your views here.
 
@@ -11,35 +18,140 @@ def landing(request):
 
 # Login page
 def login(request):
-    return render(request, 'app_general/nk_dev/login.html')
+    return render(request, 'registration/login.html')
 
 # Register page
-def register(request):
-    return render(request, 'app_general/nk_dev/regis.html')
+def register(request: HttpRequest):
+    # Post
+    if request.method == "POST":
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            auth_login(request, user)
+            return HttpResponseRedirect(reverse("home"))
+    else:
+        form = RegisterForm()
+
+    # Get
+    context = {"form": form}
+    return render(request, "app_general/register.html", context)
+
+# Policy page
+def policy(request):
+    return render(request, 'app_general/policy.html')
 
 # * General 
 # Home page if haven't login yet redirect to landing
+@login_required
 def home(request):
     # time = Orders.objects.filter(amount__isnull=True).aggregate(Sum('amount'))
     return render(request, 'app_general/tn_dev/home.html')
 
 # Shop for customer to buy
 def shop(request):
-    return render(request, 'app_general/customer_page1.html')
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = Orders.objects.get_or_create(customer=customer, completed=False)
+        items = order.orderitem_set.all()
+        cartItems = order.get_cart_items
+    else:
+        items = []
+        order = {'get_cart_total': 0, 'get_cart_items': 0}
+        cartItems = order['get_cart_items']
+
+    foods = Foods.objects.all()
+    context = {'foods': foods, 'cartItems': cartItems}
+    return render(request, 'app_general/shop.html', context)
 
 # Cart page
+@login_required
 def cart(request):
-    return render(request, 'app_general/cart.html')
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = Orders.objects.get_or_create(customer=customer, completed=False)
+        items = order.orderitem_set.all()
+    else:
+        items = []
+        order = {'get_cart_total': 0, 'get_cart_items': 0}
+    context = {'items': items, 'order': order}
+    return render(request, 'app_general/cart.html', context)
+
+def updateItem(request):
+    data = json.loads(request.body)
+    productId = data['productId']
+    action = data['action']
+
+    print("Action: ", action)
+    print("Product: ", productId)
+
+    customer = request.user.customer
+    product = Foods.objects.get(id=productId)
+    order, created = Orders.objects.get_or_create(customer=customer, completed=False)
+
+    orderItem, created = OrderItem.objects.get_or_create(order=order, foods=product)
+
+    if action == 'add':
+        orderItem.quantity = (orderItem.quantity + 1)
+    elif action == 'remove':
+        orderItem.quantity = (orderItem.quantity - 1)
+    
+    orderItem.save()
+
+    if orderItem.quantity <= 0:
+        orderItem.delete()
+
+    return JsonResponse('Item was added', safe=False)
 
 # History page
 def history(request):
     return render(request, 'app_general/history.html')
 
-# * Profile settings
+# * Dashboard settings
 # Main profile page
-def profile(request):
-    return render(request, 'app_general/tn_dev/profile.html')
+@login_required
+def dashboard(request: HttpRequest):
+    return render(request, 'app_general/dashboard.html')
 
 # Edit profile
-def editprofile(request):
-    return render(request, 'app_genearal/editprofile.html')
+@login_required
+def profile(request: HttpRequest):
+    user = request.user
+
+    # Post
+    if request.method == "POST":
+        form = UserProfileForm(request.POST, instance=user)
+        is_new_profile = False
+        
+        try:
+            # Updeate profile
+            extended_profile = ExtendedProfileForm(request.POST, instance=user.profile)
+        except:
+            # Create new profile
+            extended_profile = ExtendedProfileForm(request.POST)
+            is_new_profile = True
+
+        if form.is_valid() and extended_profile.is_valid():
+            form.save()
+            if is_new_profile:
+                # Create new profile
+                profile = extended_profile.save(commit=False)
+                profile.user = user
+                profile.save()
+            else:
+                # Update profile
+                extended_profile.save()
+            return HttpResponseRedirect(reverse("profile"))
+    else:
+        form = UserProfileForm(instance=user)
+        try:
+            extended_profile = ExtendedProfileForm(instance=user.profile)
+        except:
+            extended_profile = ExtendedProfileForm()
+
+    # Get
+    context = {
+        "form": form,
+        "extended_profile": extended_profile
+    }
+    return render(request, 'app_genearal/profile.html', context)
+    

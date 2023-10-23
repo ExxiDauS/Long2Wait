@@ -1,0 +1,13 @@
+{% extends "app_general/base.html" %} {% load static %} {% block body%} 
+
+{% for item in items %}
+<img src="{{item.foods.imageURL}}">
+<p>{{item.foods.foods_name}}</p>
+<p>${{item.foods.price|floatformat:2}}</p>
+<p>{{item.quantity}}</p>
+<p>${{item.get_total}}</p>
+{% endfor %}
+<p>{{order.get_cart_items}}</p>
+<p>${{order.get_cart_total|floatformat:2}}</p>
+
+{% endblock body%}
