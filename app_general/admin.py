@@ -24,3 +24,5 @@ admin.site.register(Reservation)
 admin.site.register(Profile)
 
 admin.site.register(OrderItem)
+
+admin.site.register(Customer)

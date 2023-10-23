@@ -27,7 +27,7 @@ Thumbs.db
 **/client_secret.json
 *creds*
 *.dat
-*password*
+
 *.httr-oauth*
 
 # Mac/OSX
