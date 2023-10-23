@@ -4,7 +4,7 @@
 
 <!-- component -->
 <div x-data="setup()" x-init="$refs.loading.classList.add('hidden');" @resize.window="watchScreen()">
-    <div class="flex h-screen antialiased text-[#0F2C59] bg-[#F8F0E5] dark:bg-dark dark:text-light">
+    <div class="flex h-screen antialiased text-[#0F2C59] bg-[url('/static/src/BG.webp')] bg-cover dark:bg-dark dark:text-light">
         <!-- Loading screen -->
         <div x-ref="loading"
             class="fixed inset-0 z-50 flex items-center justify-center text-2xl font-semibold text-white bg-indigo-800">
@@ -22,12 +22,19 @@
                 class="bg-[#0F2C59] fixed inset-x-0 bottom-0 flex flex-row-reverse items-center justify-between px-4 py-2 sm:hidden shadow-t rounded-t-3xl">
                 <!-- Menu button -->
                 <button
-                    class="p-2 transition-colors rounded-lg shadow-md hover:bg-indigo-800 hover:text-white">
+                    class="p-2 transition-colors rounded-lg shadow-md text-[#DAC0A3] hover:bg-indigo-800 hover:text-white">
                     <span class="sr-only">Toggle sidebar</span>
-                    <svg aria-hidden="true" class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h7" />
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4s-4 1.79-4 4s1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v1c0 .55.45 1 1 1h14c.55 0 1-.45 1-1v-1c0-2.66-5.33-4-8-4z"/>
+                    </svg>
+                </button>
+
+                <!-- Logo -->
+                <button
+                    class="p-2 transition-colors rounded-lg shadow-md text-[#DAC0A3] hover:bg-indigo-800 hover:text-white">
+                    <span class="sr-only">Toggle sidebar</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4s-4 1.79-4 4s1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v1c0 .55.45 1 1 1h14c.55 0 1-.45 1-1v-1c0-2.66-5.33-4-8-4z"/>
                     </svg>
                 </button>
 
@@ -69,34 +76,27 @@
                 </div> -->
                 <div class="flex flex-col items-center flex-1 p-2 space-y-4">
                     <!-- Menu button -->
-                    <button
-                        class="p-2 text-[#DAC0A3] transition-colors rounded-full shadow-md hover:ring-4 hover:ring-[#F8F0E5] hover:text-white focus:outline-none focus:ring focus:ring-indigo-900">
-                        <!-- <span class="sr-only">Toggle sidebar</span> -->
-                        <svg aria-hidden="true" class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16M4 18h7" />
+                    <a class="p-2 text-[#DAC0A3] transition-colors rounded-full shadow-md hover:ring-4 hover:ring-[#F8F0E5] hover:text-white focus:outline-none focus:ring focus:ring-indigo-900 hover:translate-x-6 duration-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4s-4 1.79-4 4s1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v1c0 .55.45 1 1 1h14c.55 0 1-.45 1-1v-1c0-2.66-5.33-4-8-4z"/>
                         </svg>
-                    </button>
+                        </a>
                     <!-- Messages button -->
-                    <button
+                    <a
                         class="p-2 text-[#DAC0A3] transition-colors rounded-full shadow-md hover:ring-4 hover:ring-[#F8F0E5] hover:text-white focus:outline-none focus:ring focus:ring-indigo-600 focus:ring-offset-white focus:ring-offset-2">
                         <span class="sr-only">Toggle message panel</span>
-                        <svg aria-hidden="true" class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512">
+                            <path fill="currentColor" d="M261.56 101.28a8 8 0 0 0-11.06 0L66.4 277.15a8 8 0 0 0-2.47 5.79L63.9 448a32 32 0 0 0 32 32H192a16 16 0 0 0 16-16V328a8 8 0 0 1 8-8h80a8 8 0 0 1 8 8v136a16 16 0 0 0 16 16h96.06a32 32 0 0 0 32-32V282.94a8 8 0 0 0-2.47-5.79Z"/>
+                            <path fill="currentColor" d="m490.91 244.15l-74.8-71.56V64a16 16 0 0 0-16-16h-48a16 16 0 0 0-16 16v32l-57.92-55.38C272.77 35.14 264.71 32 256 32c-8.68 0-16.72 3.14-22.14 8.63l-212.7 203.5c-6.22 6-7 15.87-1.34 22.37A16 16 0 0 0 43 267.56L250.5 69.28a8 8 0 0 1 11.06 0l207.52 198.28a16 16 0 0 0 22.59-.44c6.14-6.36 5.63-16.86-.76-22.97Z"/>
                         </svg>
-                    </button>
+                    </a>
                     <!-- Notifications button -->
-                    <button class="p-2 text-[#DAC0A3] transition-colors rounded-full shadow-md hover:ring-4 hover:ring-[#F8F0E5] hover:text-white focus:outline-none focus:ring focus:ring-indigo-600 focus:ring-offset-white focus:ring-offset-2">
+                    <a class="p-2 text-[#DAC0A3] transition-colors rounded-full shadow-md hover:ring-4 hover:ring-[#F8F0E5] hover:text-white focus:outline-none focus:ring focus:ring-indigo-600 focus:ring-offset-white focus:ring-offset-2">
                         <span class="sr-only">Toggle notifications panel</span>
-                        <svg aria-hidden="true" class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="M15 16.69V13h1.5v2.82l2.44 1.41l-.75 1.3L15 16.69M19.5 3.5L18 2l-1.5 1.5L15 2l-1.5 1.5L12 2l-1.5 1.5L9 2L7.5 3.5L6 2L4.5 3.5L3 2v20l1.5-1.5L6 22l1.5-1.5L9 22l1.58-1.58c.14.19.3.36.47.53A7.001 7.001 0 0 0 21 11.1V2l-1.5 1.5M11.1 11c-.6.57-1.07 1.25-1.43 2H6v-2h5.1m-2.03 4c-.07.33-.07.66-.07 1c0 .34 0 .67.07 1H6v-2h3.07M18 9H6V7h12v2m2.85 7c0 .64-.12 1.27-.35 1.86c-.26.58-.62 1.14-1.07 1.57c-.43.45-.99.81-1.57 1.07c-.59.23-1.22.35-1.86.35c-2.68 0-4.85-2.17-4.85-4.85c0-1.29.51-2.5 1.42-3.43c.93-.91 2.14-1.42 3.43-1.42c2.67 0 4.85 2.17 4.85 4.85Z"/>
                         </svg>
-                    </button>
+                    </a>0
                 </div>
 
                 <!-- User avatar -->
@@ -277,42 +277,34 @@
                 </div>
             </header>
 
-            <div class="flex justify-center items-center h-screen w-[1050px]">
-                <div class="flex snap-x-center">
-                    <div class="flex-shrink-0 w-64 p-4">
-                        <div class="flex-shrink-0 w-72 h-96 p-4 bg-white border rounded-full overflow-hidden shadow-md">
-                            <img src="card-image.jpg" alt="Card Image" class="w-full h-40 object-cover">
-                            <div class="mt-4">
-                                <h2 class="text-xl font-semibold">Card Title</h2>
-                                <p class="text-gray-600">Card description goes here.</p>
+            <div class="inline-block justify-center items-center h-screen">
+                <div class="flex justify-center items-center m-4 mt-16">
+                    <a href="{% url 'home' %}">
+                        <img class="w-60 h-60" src="{% static '/src/Logo.png' %}">
+                    </a>
+                </div>
+                <div class="flex content justify-center items-center overscroll-x-auto space-x-12 mt-8">
+                    <a href="">
+                        <div class="flex-shrink-0 w-64 h-96 p-4">
+                            <div class="flex-shrink-0 w-64 h-96 scale-90 p-4 bg-white border-[16px] border-[#6783A6] rounded-full overflow-hidden shadow-md opacity-90 hover:opacity-100 hover:scale-100 hover:border-[#403F53] hover:shadow-2xl duration-300">
+                                <img src="{% static '/src/พี่ช้าง.png' %}" class="w-full h-22 object-cover">
+                                <div class="text-center">
+                                    <h2 class="text-xl font-semibold">พี่ช้าง</h2>
+                                    <p class="text-gray-600">ร้านอาหารเลื่องชื่อจากโรงอาหารของคณะไอทีด้วยรสชาติความอร่อยและคิวที่ยาวที่สุด!</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="flex-shrink-0 w-64 p-4">
-                        <div class="flex-shrink-0 w-64 p-4 bg-white border rounded-full overflow-hidden shadow-md">
-                            <img src="card-image.jpg" alt="Card Image" class="w-full h-40 object-cover">
-                            <div class="mt-4">
-                                <h2 class="text-xl font-semibold">Card Title</h2>
-                                <p class="text-gray-600">Card description goes here.</p>
-                            </div>
+                    </a>
+                    <div class="flex-shrink-0 w-64 h-96 p-4">
+                        <div class="flex-shrink-0 w-64 h-96 scale-90 p-4 bg-slate-300 border-[16px] border-[#6783A6] rounded-full overflow-hidden shadow-md opacity-90 hover:opacity-100 hover:scale-100 hover:border-[#403F53] duration-300">
+                            <img src="{% static '/src/พี่ฝน.png' %}" alt="Card Image" class="w-full h-22 object-cover">
+                            <div class=" z-50 text-center justify-items-center text-2xl font-bold">Coming Soon..</div>
                         </div>
                     </div>
-                    <div class="flex-shrink-0 w-64 p-4">
-                        <div class="flex-shrink-0 w-64 p-4 bg-white border rounded-full overflow-hidden shadow-md">
-                            <img src="card-image.jpg" alt="Card Image" class="w-full h-40 object-cover">
-                            <div class="mt-4">
-                                <h2 class="text-xl font-semibold">Card Title</h2>
-                                <p class="text-gray-600">Card description goes here.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex-shrink-0 w-64 p-4">
-                        <div class="flex-shrink-0 w-64 p-4 bg-white border rounded-full overflow-hidden shadow-md">
-                            <img src="card-image.jpg" alt="Card Image" class="w-full h-40 object-cover">
-                            <div class="mt-4">
-                                <h2 class="text-xl font-semibold">Card Title</h2>
-                                <p class="text-gray-600">Card description goes here.</p>
-                            </div>
+                    <div class="flex-shrink-0 w-64 h-96 p-4">
+                        <div class="flex-shrink-0 w-64 h-96 scale-90 p-4 bg-slate-300 border-[16px] border-[#6783A6] rounded-full overflow-hidden shadow-md opacity-90 hover:opacity-100 hover:scale-100 hover:border-[#403F53] duration-300">
+                            <img src="{% static '/src/วาสนา.png' %}" alt="Card Image" class="w-full h-22 object-cover">
+                            <div class=" z-50 text-center justify-items-center text-2xl font-bold">Coming Soon..</div>
                         </div>
                     </div>
                 </div>
