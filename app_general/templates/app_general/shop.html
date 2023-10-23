@@ -1,0 +1,12 @@
+{% extends "app_general/base.html" %} {% load static %} {% block body%} 
+
+{% for food in foods %}
+<div>
+    <h6><strong>{{food.foods_name}}</strong></h6>
+    <h4>
+        <strong>${{food.price|floatformat:2}}</strong>
+    </h4>
+</div>
+{% endfor %}
+
+{% endblock body%}

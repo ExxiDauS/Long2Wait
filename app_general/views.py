@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Foods, Reservation, Orders
+from .models import *
 from app_general.forms import RegisterForm
 from django.contrib.auth import login as auth_login
 from django.contrib.auth.decorators import login_required
@@ -34,6 +34,10 @@ def register(request: HttpRequest):
     context = {"form": form}
     return render(request, "app_general/register.html", context)
 
+# Policy page
+def policy(request):
+    return render(request, 'app_general/policy.html')
+
 # * General 
 # Home page if haven't login yet redirect to landing
 @login_required
@@ -43,7 +47,9 @@ def home(request):
 
 # Shop for customer to buy
 def shop(request):
-    return render(request, 'app_general/customer_page1.html')
+    foods = Foods.objects.all()
+    context = {'foods': foods}
+    return render(request, 'app_general/customer_page1.html', context)
 
 # Cart page
 def cart(request):

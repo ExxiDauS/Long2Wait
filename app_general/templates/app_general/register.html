@@ -84,6 +84,12 @@
         </label>
         {{form.password2}} {{form.password2.errors}}
       </div>
+      <div class="mb-4">
+        <input type="checkbox" id="policy" name="policy">
+        <a href="{% url 'policy' %}">
+        ฉันยอมรับข้อตกลงและเงื่อนไขตามนโยบายผู้รับผิดชอบข้อมูลและความเป็นส่วนตัว
+        </a>
+      </div>
       <div>
         <button
           class="hover:shadow-form rounded-md bg-[#0F2C59] w-[217px] h-[57px] px-[23px] py-[7px] text-base font-semibold text-[#EADBC8] outline-none font-['Prompt']"
