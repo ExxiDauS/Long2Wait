@@ -4,7 +4,7 @@
 
 <!-- component -->
 <div x-data="setup()" x-init="$refs.loading.classList.add('hidden');" @resize.window="watchScreen()">
-    <div class="flex h-screen antialiased text-[#0F2C59] bg-[#F8F0E5] dark:bg-dark dark:text-light">
+    <div class="flex h-screen antialiased text-[#0F2C59] bg-[url('/static/src/BG.webp')] bg-cover dark:bg-dark dark:text-light">
         <!-- Loading screen -->
         <div x-ref="loading"
             class="fixed inset-0 z-50 flex items-center justify-center text-2xl font-semibold text-white bg-indigo-800">
@@ -290,18 +290,21 @@
                     </a>
                 </div>
                 <div class="flex content justify-center items-center overscroll-x-auto space-x-12 mt-8">
-                    <div class="flex-shrink-0 w-64 h-96 p-4">
-                        <div class="flex-shrink-0 w-64 h-96 p-4 bg-white border-[16px] border-[#6783A6] rounded-full overflow-hidden shadow-md hover:scale-125 hover:border-[#403F53] duration-300">
-                            <img src="{% static '/src/พี่ช้าง.png' %}" class="w-full h-22 object-cover">
-                            <div class="mt-4 text-center">
-                                <h2 class="text-xl font-semibold">พี่ช้าง</h2>
-                                <p class="text-gray-600">Card description goes here.</p>
+                    <a href="">
+                        <div class="flex-shrink-0 w-64 h-96 p-4">
+                            <div class="flex-shrink-0 w-64 h-96 scale-90 p-4 bg-white border-[16px] border-[#6783A6] rounded-full overflow-hidden shadow-md opacity-90 hover:opacity-100 hover:scale-100 hover:border-[#403F53] hover:shadow-2xl duration-300">
+                                <img src="{% static '/src/พี่ช้าง.png' %}" class="w-full h-22 object-cover">
+                                <div class="text-center">
+                                    <h2 class="text-xl font-semibold">พี่ช้าง</h2>
+                                    <p class="text-gray-600">ร้านอาหารเลื่องชื่อจากโรงอาหารของคณะไอทีด้วยรสชาติความอร่อยและคิวที่ยาวที่สุด!</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                     <div class="flex-shrink-0 w-64 h-96 p-4">
-                        <div class="flex-shrink-0 w-64 h-96 p-4 bg-white border-[16px] border-[#6783A6] rounded-full overflow-hidden shadow-md hover:scale-125 hover:border-[#403F53] duration-300">
+                        <div class="flex-shrink-0 w-64 h-96 scale-90 p-4 bg-slate-300 border-[16px] border-[#6783A6] rounded-full overflow-hidden shadow-md opacity-90 hover:opacity-100 hover:scale-100 hover:border-[#403F53] duration-300">
                             <img src="{% static '/src/พี่ฝน.png' %}" alt="Card Image" class="w-full h-22 object-cover">
+                            <div class=" z-50 text-center justify-items-center text-2xl font-bold">Coming Soon..</div>
                             <div class="mt-4 text-center">
                                 <h2 class="text-xl font-semibold">พี่ฝน</h2>
                                 <p class="text-gray-600">Card description goes here.</p>
@@ -309,19 +312,10 @@
                         </div>
                     </div>
                     <div class="flex-shrink-0 w-64 h-96 p-4">
-                        <div class="flex-shrink-0 w-64 h-96 p-4 bg-white border-[16px] border-[#6783A6] rounded-full overflow-hidden shadow-md  hover:scale-125 hover:border-[#403F53] duration-300">
+                        <div class="flex-shrink-0 w-64 h-96 scale-90 p-4 bg-slate-300 border-[16px] border-[#6783A6] rounded-full overflow-hidden shadow-md opacity-90 hover:opacity-100 hover:scale-100 hover:border-[#403F53] duration-300">
                             <img src="{% static '/src/วาสนา.png' %}" alt="Card Image" class="w-full h-22 object-cover">
                             <div class="mt-4 text-center">
                                 <h2 class="text-xl font-semibold">วาสนา</h2>
-                                <p class="text-gray-600">Card description goes here.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex-shrink-0 w-64 h-96 p-4">
-                        <div class="flex-shrink-0 w-64 h-96 p-4 bg-white border-[16px] border-[#6783A6] rounded-full overflow-hidden shadow-md  hover:scale-125 hover:border-[#403F53] duration-300">
-                            <img src="{% static '/src/มะระ.png' %}" alt="Card Image" class="w-full h-22 object-cover">
-                            <div class="mt-4 text-center">
-                                <h2 class="text-xl font-semibold">ก๋วยเตี๋ยวไก่มะระ</h2>
                                 <p class="text-gray-600">Card description goes here.</p>
                             </div>
                         </div>
