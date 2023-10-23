@@ -1,8 +1,58 @@
 {% extends "app_general/base.html" %}
 
 {% load static %} {% block body%}
-<!--  log in -->
-    <div class="flex flex-row items-center justify-center w-full">
-        <p class="text-xl"> Dashboard </p>
+<!--  Profile settings -->
+    <div class="h-screen bg-[url('{% static 'src\BG.webp' %}')] bg-no-repeat bg-cover">
+
+<div class="flex flex-col items-center justify-center h-screen">
+    <div>
+        <img class="w-[150px] h-[150px] rounded-full" src="{% static 'src/Logo.png' %}" alt="Rounded avatar">
     </div>
+
+
+    <div>
+        <!-- บัญชีผู้ใช้ -->
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+                บัญชีผู้ใช้
+            </label>
+            <input class="shadow appearance-none border rounded w-[450px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username in box">
+        </div>
+        <div class="mb-4">
+            <!-- อีเมล -->
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+                อีเมล
+            </label>
+            <input class="shadow appearance-none border rounded w-[450px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="email" placeholder="Email in box">
+        </div>
+        <div class="mb-4">
+            <!-- รหัสผ่าน -->
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+                รหัสผ่าน
+            </label>
+            <input class="shadow appearance-none border rounded w-[450px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="password" placeholder="Email in box">
+        </div>
+    </div>
+
+
+    <div>
+        <div class="flex">
+            <img class="mr-3 w-[25px] h-[25px] rounded-full" src="{% static 'src/terms.png' %}" alt="Rounded avatar">
+            <a href="#" class="text-gray-800">Contact</a>
+        </div>
+        <br>
+        <div class="flex">
+            <img class="mr-3 w-[25px] h-[25px] rounded-full" src="{% static 'src/contact.png' %}" alt="Rounded avatar">
+            <a href="#" class="text-gray-800">เกี่ยวกับเรา</a>
+        </div>
+    </div>
+
+
+    <!-- logout -->
+    <div>
+        <a href="" class="underline">
+            ออกจากระบบ
+        </a>
+    </div>
+</div>
 {% endblock body%}
