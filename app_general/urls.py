@@ -6,6 +6,7 @@ urlpatterns = [
     # * Authentication
     path('', views.landing, name='landing'),
     path('register/', views.register, name='register'),
+    path('login/', views.login, name='login'),
     path('', include("django.contrib.auth.urls")),
     path('policy/', views.policy, name='policy'),
 

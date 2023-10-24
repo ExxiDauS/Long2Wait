@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from .models import *
 from app_general.forms import RegisterForm
-from django.contrib.auth import login as auth_login
+from django.contrib import messages
+from django.contrib.auth import authenticate, logout, login as auth_login
 from django.contrib.auth.decorators import login_required
 from django.http import HttpRequest, HttpResponseRedirect
 from django.urls import reverse
@@ -17,8 +18,19 @@ def landing(request):
     return render(request, 'app_general/nk_dev/landing.html')
 
 # Login page
-def login(request):
-    return render(request, 'registration/login.html')
+def login(request: HttpRequest):
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            auth_login(request,user)
+            return HttpResponseRedirect(reverse("home"))
+        else:
+            messages.success(request, "Username or Password is incorrect")
+            return render(request, 'authenticate/login.html')
+    else:
+        return render(request, 'authenticate/login.html')
 
 # Register page
 def register(request: HttpRequest):
@@ -44,8 +56,15 @@ def policy(request):
 # Home page if haven't login yet redirect to landing
 @login_required
 def home(request):
-    # time = Orders.objects.filter(amount__isnull=True).aggregate(Sum('amount'))
-    return render(request, 'app_general/tn_dev/home.html')
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = Orders.objects.get_or_create(customer=customer, completed=False)
+        items = order.orderitem_set.all()
+    else:
+        items = []
+        order = {'get_cart_total': 0, 'get_cart_items': 0}
+    context = {'items': items, 'order': order}
+    return render(request, 'app_general/tn_dev/home.html', context)
 
 # Shop for customer to buy
 def shop(request):
@@ -94,6 +113,8 @@ def updateItem(request):
         orderItem.quantity = (orderItem.quantity + 1)
     elif action == 'remove':
         orderItem.quantity = (orderItem.quantity - 1)
+    elif action == 'delete':
+        orderItem.quantity = 0
     
     orderItem.save()
 
