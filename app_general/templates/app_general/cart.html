@@ -6,8 +6,13 @@
 <p>${{item.foods.price|floatformat:2}}</p>
 <p>{{item.quantity}}</p>
 <p>${{item.get_total}}</p>
+<button data-product="{{item.foods.id}}" data-action="add" class="update-cart">ADD</button>
+<button data-product="{{item.foods.id}}" data-action="remove" class="update-cart">DECREASE</button>
+<button data-product="{{item.foods.id}}" data-action="delete" class="update-cart">REMOVE</button>
 {% endfor %}
 <p>{{order.get_cart_items}}</p>
 <p>${{order.get_cart_total|floatformat:2}}</p>
+<h2>{{order.get_time}}</h2>
+
 
 {% endblock body%}

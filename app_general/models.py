@@ -66,6 +66,12 @@ class Orders(models.Model):
         total = sum([item.quantity for item in orderitems])
         return total
 
+    @property
+    def get_time(self):
+        orderitems = self.orderitem_set.all()
+        time = sum([item.quantity for item in orderitems]) * 5  
+        return time
+
 # Cart
 class OrderItem(models.Model):
     foods = models.ForeignKey(Foods, on_delete=models.SET_NULL, null=True)

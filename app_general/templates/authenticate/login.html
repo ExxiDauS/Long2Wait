@@ -14,10 +14,10 @@
   class="flex items-center justify-center h-screen bg-[url('{% static 'src\sign-in.svg' %}')] bg-no-repeat bg-cover"
 >
   <div className="flex flex-col w-full items-center justify-center py-8">
-    <form action="{% url 'login' %}" method="post">
+    <form action="" method="post">
       {% csrf_token %} {{form.non_field_errors}} {% if request.GET.next %}
       <input type="hidden" name="next" value="{{request.GET.next}}" />
-      {% endif %} {{form}}
+      {% endif %}
       <!-- logo -->
       <img
         src="{% static 'src/Logo.png' %}"
@@ -36,6 +36,7 @@
           </label>
           <input
             type="text"
+            name="username"
             placeholder="Username"
             class="w-[500px] rounded-md placeholder-[#DFB17E] bg-[#EADBC8] py-3 px-6 text-base font-['Prompt'] text-[#0F2C59] outline-none focus:border-[#6A64F1] focus:shadow-md"
           />
@@ -51,6 +52,7 @@
           </label>
           <input
             type="password"
+            name="password"
             placeholder="Password"
             class="w-[500px] rounded-md placeholder-[#DFB17E] bg-[#EADBC8] py-3 px-6 text-base font-['Prompt'] text-[#0F2C59] outline-none focus:border-[#6A64F1] focus:shadow-md"
           />
