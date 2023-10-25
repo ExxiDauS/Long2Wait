@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-p^6ht_i*)4_c)i&@$h%%6aui+g$68mcyr50wa(xj2j&env3aq=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'True'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app']
 
 # INTERNAL_IPS
 INTERNAL_IPS = [
@@ -78,7 +78,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'project_l2w.wsgi.application'
+WSGI_APPLICATION = 'project_l2w.wsgi.app'
 
 
 # Database
