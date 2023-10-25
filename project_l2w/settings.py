@@ -78,7 +78,8 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'project_l2w.wsgi.app'
+WSGI_APPLICATION = 'project_l2w.wsgi.application'
+
 
 
 # Database
