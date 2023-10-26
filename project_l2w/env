@@ -1,8 +1,0 @@
-SECRET_KEY=django-insecure-p^6ht_i*)4_c)i&@$h%%6aui+g$68mcyr50wa(xj2j&env3aq=
-DEBUG=True
-DB_NAME=test
-DB_USER=clmxa7jxb0014bsmna3he4x78
-DB_PASSWORD=2TfWodXFtHMIkmofmjNoWguz
-DB_HOST=161.246.127.24
-DB_PORT=9004
-```
