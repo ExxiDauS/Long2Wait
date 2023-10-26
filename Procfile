@@ -1,2 +1,2 @@
-web: gunicorn project_l2w.wsgi --log-file -
+web: gunicorn 'project_l2w.wsgi'
 release: python manage.py migrate
