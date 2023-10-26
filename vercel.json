@@ -3,13 +3,13 @@
     {
       "src": "project_l2w/wsgi.py",
       "use": "@vercel/python",
-      "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
+      "config": { "maxLambdaSize": "15mb", "runtime": "python3.11" }
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "now_app/wsgi.py"
+      "dest": "project_l2w/wsgi.py"
     }
   ]
 }
