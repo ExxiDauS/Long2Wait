@@ -2,10 +2,10 @@
 {% block body%} 
 {% for food in foods %}
 <div>
-  <img src="{{food.imageURL}}" />
+  <img src="{{food.imageURL}}" class='w-1/2'/>
   <h6><strong>{{food.foods_name}}</strong></h6>
   <h4>
-    <strong>${{food.price|floatformat:2}}</strong>
+    <strong>฿ {{food.price|floatformat:2}}</strong>
   </h4>
   <button data-product="{{food.id}}" data-action="add" class="update-cart">
     Add to cart

@@ -1,4 +1,6 @@
-{% extends "app_general/base.html" %} {% load static %} {% block body%} 
+{% extends "app_general/base.html" %} {% load static %} 
+
+{% block body%} 
 
 {% for item in items %}
 <img src="{{item.foods.imageURL}}">
@@ -13,6 +15,66 @@
 <p>{{order.get_cart_items}}</p>
 <p>${{order.get_cart_total|floatformat:2}}</p>
 <h2>{{order.get_time}}</h2>
+<button id="cancel">cancel</button>
+<button id="checkout">checkout</button>
 
+<script type="text/javascript">
+    var total = "{{order.get_cart_items}}"
+
+    document.getElementById("checkout").addEventListener("click", function(e) {
+        submitCheckout()
+    })
+
+    document.getElementById("cancel").addEventListener("click", function(e) {
+        submitCancel()
+    })
+
+    var url = "/checkout/"
+
+
+
+    function submitCheckout(){
+        console.log("checkout check")
+        fetch(url, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRFToken": csrftoken,
+        },
+        body: JSON.stringify({
+            "total": total,
+        }),
+    })
+    .then((response) => {
+        response.json();
+    })
+    .then((data) => {
+        location.reload();
+        window.location.href = "{% url 'home' %}";
+    });
+    }
+
+    function submitCancel(){
+        console.log("cancel check")
+        fetch(url, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRFToken": csrftoken,
+        },
+        body: JSON.stringify({
+            "total": total,
+        }),
+    })
+    .then((response) => {
+        response.json();
+    })
+    .then((data) => {
+        location.reload();
+        window.location.href = "{% url 'home' %}";
+    });
+    }
+
+</script>
 
 {% endblock body%}

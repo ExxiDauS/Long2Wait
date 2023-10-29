@@ -32,6 +32,10 @@ def login(request: HttpRequest):
     else:
         return render(request, 'authenticate/login.html')
 
+def logout_user(request):
+    logout(request)
+    return HttpResponseRedirect(reverse("landing"))
+
 # Register page
 def register(request: HttpRequest):
     # Post
@@ -39,6 +43,7 @@ def register(request: HttpRequest):
         form = RegisterForm(request.POST)
         if form.is_valid():
             user = form.save()
+            customer = Customer.objects.get_or_create(user=user, name=user.username, email=user.email)
             auth_login(request, user)
             return HttpResponseRedirect(reverse("home"))
     else:
@@ -122,6 +127,19 @@ def updateItem(request):
         orderItem.delete()
 
     return JsonResponse('Item was added', safe=False)
+
+def processOrder(request):
+    data = json.loads(request.body)
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = Orders.objects.get_or_create(customer=customer, completed=False)
+        total = int(data['total'])
+        if total == order.get_cart_items:
+            order.completed = True
+            order.total_quantity = total
+        order.save()
+    print('Data:', data)
+    return JsonResponse('Item checkout.', safe=False)
 
 # History page
 def history(request):
