@@ -2,64 +2,90 @@
 
 {% load static %} {% block body%}
 <!--  Profile settings -->
-    <div class="h-screen bg-[url('{% static 'src\BG.webp' %}')] bg-no-repeat bg-cover">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Prompt&display=swap"
+  rel="stylesheet">
 
-<div class="flex flex-col items-center justify-center h-screen">
-    <div>
-        <img class="w-[150px] h-[150px] rounded-full" src="{% static 'src/Logo.png' %}" alt="Rounded avatar">
-    </div>
+<div class="h-screen bg-[url('{% static 'src\sign-in.svg' %}')] bg-no-repeat bg-cover">
 
-
-    <div>
-        <!-- บัญชีผู้ใช้ -->
-        <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
-                บัญชีผู้ใช้
-            </label>
-            <input class="shadow border rounded w-[450px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username in box">
+    <div class="flex flex-col items-center justify-center font-['Prompt']">
+        <div class="mt-[5%]">
+            <img class="w-[150px] h-[150px] rounded-full" src="https://th.bing.com/th/id/OIP.yYUwl3GDU07Q5J5ttyW9fQHaHa?pid=ImgDet&rs=1" alt="Profile Picture">
+            <div class="text-center">
+                <button class="mt-[17px] underline text-gray-500 text-sm">เปลี่ยนรูปโปรไฟล์<button>
+            </div>
         </div>
-        <div class="mb-4">
+        <div class="w-[40%] text-base">
+            <!-- บัญชีผู้ใช้ -->
+            <div class="mb-4 text-[#0F2C59]">
+                <label class="block mb-[0.5%] ml-[2%]" for="username">
+                    บัญชีผู้ใช้
+                </label>
+                <svg class="absolute mt-[0.5%] ml-[34%]"
+                    xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m5 16l-1 4l4-1L19.586 7.414a2 2 0 0 0 0-2.828l-.172-.172a2 2 0 0 0-2.828 0L5 16ZM15 6l3 3m-5 11h8"/>
+                </svg>
+                <input class="shadow border-hidden border rounded w-[100%] py-2 px-3 leading-tight focus:outline-none focus:shadow-outline bg-[#EADBC8]" id="username" type="text" placeholder="Username">
+            </div>
+            <div class="mb-4 text-[#0F2C59]">
+                <label class="block mb-[0.5%] ml-[2%]" for="username">
+                    ชื่อเล่น
+                </label>
+                <svg class="absolute mt-[4.5px] ml-[34%]"
+                    xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m5 16l-1 4l4-1L19.586 7.414a2 2 0 0 0 0-2.828l-.172-.172a2 2 0 0 0-2.828 0L5 16ZM15 6l3 3m-5 11h8"/>
+                </svg>
+                <input
+                    class="shadow border-hidden border rounded w-[100%] py-2 px-3 leading-tight focus:outline-none focus:shadow-outline bg-[#EADBC8]"
+                    id="username" type="text" placeholder="Nickname">
+            </div>
+            <div class="mb-4 text-[#0F2C59]">
             <!-- อีเมล -->
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
-                อีเมล
-            </label>
-            <input class="shadow border rounded w-[450px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="email" placeholder="Email in box">
-        </div>
-        <div class="mb-4">
+                <label class="block mb-[0.5%] ml-[2%]" for="email">
+                    อีเมล
+                </label>
+            <svg class="absolute mt-[4.5px] ml-[34%]"
+                xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m5 16l-1 4l4-1L19.586 7.414a2 2 0 0 0 0-2.828l-.172-.172a2 2 0 0 0-2.828 0L5 16ZM15 6l3 3m-5 11h8"/>
+            </svg>
+                <input class="shadow border-hidden border rounded w-[100%] py-2 px-3  leading-tight focus:outline-none focus:shadow-outline bg-[#EADBC8] text-[#0F2C59]" id="username" type="email" placeholder="Email">
+            </div>
+            <div class="mb-4 text-[#0F2C59]">
             <!-- รหัสผ่าน -->
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
-                รหัสผ่าน
-            </label>
-            <input class="shadow appearance-none border rounded w-[450px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="password" placeholder="Email in box">
-        </div>
-    </div>
-
-
-    <div>
-        <div class="flex">
-            <div class="w-6 h-6 text-[#DAC0A3] bg-[#0F2C59] boder-4 border-hidden rounded-full mr-2 p-1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
-                    <path fill="currentColor" d="M11 17h2v-6h-2v6Zm1-8q.425 0 .713-.288T13 8q0-.425-.288-.713T12 7q-.425 0-.713.288T11 8q0 .425.288.713T12 9Zm0 13q-3.475-.875-5.738-3.988T4 11.1V5l8-3l8 3v6.1q0 3.8-2.263 6.913T12 22Z"/>
+                <label class="block mb-[0.5%] ml-[2%]" for="password">
+                    รหัสผ่าน
+                </label>
+                <svg class="absolute mt-[4.5px] ml-[34%]"
+                    xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m5 16l-1 4l4-1L19.586 7.414a2 2 0 0 0 0-2.828l-.172-.172a2 2 0 0 0-2.828 0L5 16ZM15 6l3 3m-5 11h8"/>
                 </svg>
+                <input class="shadow appearance-none border-hidden border rounded w-[100%] py-2 px-3  leading-tight focus:outline-none focus:shadow-outline bg-[#EADBC8]" id="username" type="password" placeholder="Password">
             </div>
-            <a href="#" class="text-gray-800">เงื่อนไขการให้บริการ</a>
-        </div>
-        <br>
-        <div class="flex">
-            <div class="w-6 h-6 text-[#DAC0A3] bg-[#0F2C59] boder-4 border-hidden rounded-full mr-2 p-1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20"><path fill="currentColor" fill-rule="evenodd" d="M2 3.5A1.5 1.5 0 0 1 3.5 2h1.148a1.5 1.5 0 0 1 1.465 1.175l.716 3.223a1.5 1.5 0 0 1-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 0 0 6.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 0 1 1.767-1.052l3.223.716A1.5 1.5 0 0 1 18 15.352V16.5a1.5 1.5 0 0 1-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 0 1 2.43 8.326A13.019 13.019 0 0 1 2 5V3.5Z" clip-rule="evenodd"/>
-                </svg>
-            </div>
-            <a href="#" class="text-gray-800">เกี่ยวกับเรา</a>
         </div>
     </div>
 
+        <div class="flex flex-col items-center">
+            <div class="flex flex-col w-[40%] text-sm gap-2">
+                <div class="flex">
+                    <div class="w-6 h-6 text-[#DAC0A3] bg-[#0F2C59] boder-4 border-hidden rounded-full mr-2 p-1 mb-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="M11 17h2v-6h-2v6Zm1-8q.425 0 .713-.288T13 8q0-.425-.288-.713T12 7q-.425 0-.713.288T11 8q0 .425.288.713T12 9Zm0 13q-3.475-.875-5.738-3.988T4 11.1V5l8-3l8 3v6.1q0 3.8-2.263 6.913T12 22Z"/>
+                        </svg>
+                    </div>
+                    <a href="#" class="text-gray-800">เงื่อนไขการให้บริการ</a>
+                </div>
+                <div class="flex">
+                    <div class="w-6 h-6 text-[#DAC0A3] bg-[#0F2C59] boder-10 border-hidden rounded-full mr-2 p-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20"><path fill="currentColor" fill-rule="evenodd" d="M2 3.5A1.5 1.5 0 0 1 3.5 2h1.148a1.5 1.5 0 0 1 1.465 1.175l.716 3.223a1.5 1.5 0 0 1-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 0 0 6.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 0 1 1.767-1.052l3.223.716A1.5 1.5 0 0 1 18 15.352V16.5a1.5 1.5 0 0 1-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 0 1 2.43 8.326A13.019 13.019 0 0 1 2 5V3.5Z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <a href="#" class="text-gray-800">เกี่ยวกับเรา</a>
+                </div>
+            </div>
+        </div>
 
-    <!-- logout -->
-    <div>
-        <a href="home.html" class="underline">
-            ออกจากระบบ
-        </a>
-    </div>
+        <!-- logout -->
+
+        <div class="flex flex-col">
+                <button class="underline mt-4"><a href="/app_general/templates/app_general/dashboard2.html">ออกจากระบบ</a><button>
+        </div>
 </div>
 {% endblock body%}
