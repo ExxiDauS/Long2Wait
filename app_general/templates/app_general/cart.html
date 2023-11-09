@@ -1,13 +1,69 @@
-{% extends "app_general/base.html" %} {% load static %} {% block body%} 
+{% extends "app_general/base.html" %} {% load static %} {% block body%}
 
-{% for item in items %}
-<img src="{{item.foods.imageURL}}">
-<p>{{item.foods.foods_name}}</p>
-<p>${{item.foods.price|floatformat:2}}</p>
-<p>{{item.quantity}}</p>
-<p>${{item.get_total}}</p>
-{% endfor %}
-<p>{{order.get_cart_items}}</p>
-<p>${{order.get_cart_total|floatformat:2}}</p>
+<div class="flex antialiased h-screen bg-[url('/static/src/BG.webp')] bg-cover">
+
+    {% include 'app_general/components/navbar.html' %}
+
+    <div class="flex flex-col flex-1">
+        <div class="inline-block justify-center items-center h-screen">
+            <!-- restaurant -->
+            <div class="flex flex-col flex-1 justify-center items-center m-4">
+                <h1 class="font-bold text-4xl mt-4">ร้านพี่ช้าง</h1>
+                <img src="{% static '/src/พี่ช้าง.png' %}" class="w-64 h-64 mt-6 bg-[#F8F0E5] border-yellow-200 rounded-2xl shadow-lg">
+            </div>
+            <!-- restaurant's menu -->
+            <div class="flex flex-col">
+                <h2 class="font-bold text-3xl ml-6">เมนู</h2>
+                <div class="flex flex-row justify-center gap-6 mt-6 overflow-x-scroll overflow-hidden">
+                    <div class=" w-48 h-72 border rounded-full p-2 flex flex-col items-center shadow-xl cursor-pointer transition-colors duration-700 ease-in-out bg-yellow-400">
+                        <div class="border rounded-full p-2 bg-white">
+                            <img src="https://image.flaticon.com/icons/svg/1046/1046874.svg" alt="" class="h-12 w-12">
+                        </div>
+                        <p class="mt-3 mb-10 font-bold  text-xs">All</p>
+                    </div>
+                    <div class=" w-48 h-72 border rounded-full p-2 flex flex-col items-center shadow-xl cursor-pointer transition-colors duration-700 ease-in-out">
+                        <div class="border rounded-full p-2 bg-white">
+                            <img src="https://image.flaticon.com/icons/svg/766/766226.svg" alt="" class="h-12 w-12">
+                        </div>
+                        <p class="mt-3 mb-10 font-bold  text-xs">Pizza</p>
+                    </div>
+                    <div class=" w-48 h-72 border rounded-full p-2 flex flex-col items-center shadow-xl cursor-pointer transition-colors duration-700 ease-in-out">
+                        <div class="border rounded-full p-2 bg-white">
+                            <img src="https://image.flaticon.com/icons/svg/766/766226.svg" alt="" class="h-12 w-12">
+                        </div>
+                        <p class="mt-3 mb-10 font-bold  text-xs">Pizza</p>
+                    </div>
+                    <div class=" w-48 h-72 border rounded-full p-2 flex flex-col items-center shadow-xl cursor-pointer transition-colors duration-700 ease-in-out">
+                        <div class="border rounded-full p-2 bg-white">
+                            <img src="https://image.flaticon.com/icons/svg/766/766226.svg" alt="" class="h-12 w-12">
+                        </div>
+                        <p class="mt-3 mb-10 font-bold  text-xs">Pizza</p>
+                    </div>
+                    <div class=" w-48 h-72 border rounded-full p-2 flex flex-col items-center shadow-xl cursor-pointer transition-colors duration-700 ease-in-out">
+                        <div class="border rounded-full p-2 bg-white">
+                            <img src="https://image.flaticon.com/icons/svg/766/766226.svg" alt="" class="h-12 w-12">
+                        </div>
+                        <p class="mt-3 mb-10 font-bold  text-xs">Pizza</p>
+                    </div>
+                    <div class=" w-48 h-72 border rounded-full p-2 flex flex-col items-center shadow-xl cursor-pointer transition-colors duration-700 ease-in-out">
+                        <div class="border rounded-full p-2 bg-white">
+                            <img src="https://image.flaticon.com/icons/svg/766/766226.svg" alt="" class="h-12 w-12">
+                        </div>
+                        <p class="mt-3 mb-10 font-bold  text-xs">Pizza</p>
+                    </div>
+                </div>
+                <!-- {% for item in items %}
+                    <img src="{{item.foods.imageURL}}">
+                    <p>{{item.foods.foods_name}}</p>
+                    <p>${{item.foods.price|floatformat:2}}</p>
+                    <p>{{item.quantity}}</p>
+                    <p>${{item.get_total}}</p>
+                {% endfor %}
+                    <p>{{order.get_cart_items}}</p>
+                    <p>${{order.get_cart_total|floatformat:2}}</p> -->
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock body%}
