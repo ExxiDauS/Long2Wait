@@ -1,15 +1,37 @@
-{% extends "app_general/base.html" %} {% load static %} 
-{% block body%} 
-{% for food in foods %}
-<div>
-  <img src="{{food.imageURL}}" class='w-1/2'/>
-  <h6><strong>{{food.foods_name}}</strong></h6>
-  <h4>
-    <strong>฿ {{food.price|floatformat:2}}</strong>
-  </h4>
-  <button data-product="{{food.id}}" data-action="add" class="update-cart">
-    Add to cart
-  </button>
+{% extends "app_general/base.html" %} {% load static %} {% block body%}
+
+<div
+  class="flex h-screen text-[#0F2C59] bg-[url('/static/src/BG.webp')] bg-cover"
+>
+  {% include 'app_general/components/navbar.html' %}
+  <div class="flex flex-col flex-1 w-full">
+    <div class="flex justify-center items-center text-center m-4 mt-6">
+      <div class="font-bold text-2xl">ร้านพี่ช้าง</div>
+      <div class="w-60 h-60">
+        <img src="{% static '/src/พี่ช้าง.png' %}" alt="p'chang" />
+      </div>
+    </div>
+    <div
+      class="grid grid-flow-col mt-6 m-4 overflow-x-scroll scroll-smooth overflow-hidden"
+    >
+      {% for food in foods %}
+      <div class="">
+        <img src="{{food.imageURL}}" class="w-1/2" />
+        <h6><strong>{{food.foods_name}}</strong></h6>
+        <h4>
+          <strong>฿ {{food.price|floatformat:2}}</strong>
+        </h4>
+        <button
+          data-product="{{food.id}}"
+          data-action="add"
+          class="update-cart"
+        >
+          Add to cart
+        </button>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
 </div>
-{% endfor %} 
+
 {% endblock body%}
