@@ -14,7 +14,7 @@
     <div class="flex h-3/5 justify-center">
         <a href="{% url 'shop' %}" class="flex justify-center align-middle w-3/4 sm:w-2/5 md:w-2/5 lg:w-1/5">
           <div
-            class="w-full md:w-3/4 lg:w-10/12 p-4 bg-white border-[20px] border-[#6783A6] rounded-full shadow-md opacity-90 hover:opacity-100 hover:scale-100 hover:border-[#403F53] hover:shadow-2xl duration-300"
+            class="w-full scale-90 md:w-3/4 lg:w-10/12 p-4 bg-white border-[20px] border-[#6783A6] rounded-full shadow-md opacity-90 hover:opacity-100 hover:scale-100 hover:border-[#403F53] hover:shadow-2xl duration-300"
           >
             <img
               src="{% static '/src/พี่ช้าง.png' %}"
@@ -29,6 +29,20 @@
             </div>
           </div>
         </a>
+        <div
+            class="w-64 h-96 scale-90 p-4 bg-slate-300 border-[16px] border-[#6783A6] rounded-full overflow-hidden shadow-md opacity-90 hover:opacity-100 hover:scale-100 hover:border-[#403F53] duration-300"
+          >
+            <img
+              src="{% static '/src/พี่ฝน.png' %}"
+              alt="Card Image"
+              class="w-full h-22 object-cover"
+            />
+            <div
+              class="z-50 text-center justify-items-center text-2xl font-bold"
+            >
+              Coming Soon..
+            </div>
+          </div>
     </div>
   </div>
 </div>
