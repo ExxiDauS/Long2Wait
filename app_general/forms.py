@@ -11,20 +11,20 @@ class RegisterForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         
-        self.fields['username'].widget.attrs['class'] = "w-[500px] rounded-md placeholder-[#DFB17E] bg-[#EADBC8] py-3 px-6 text-base font-['Prompt'] text-[#0F2C59] outline-none focus:border-[#6A64F1] focus:shadow-md"
+        self.fields['username'].widget.attrs['class'] = "w-full rounded-md placeholder-[#DFB17E] bg-[#EADBC8] py-3 px-5 text-base text-[#0F2C59] outline-none focus:border-[#6A64F1] focus:shadow-md"
         self.fields['username'].widget.attrs['placeholder'] = 'Username'
-        self.fields['password1'].widget.attrs['class'] = "w-[500px] rounded-md placeholder-[#DFB17E] bg-[#EADBC8] py-3 px-6 text-base font-['Prompt'] text-[#0F2C59] outline-none focus:border-[#6A64F1] focus:shadow-md"
+        self.fields['password1'].widget.attrs['class'] = "w-full rounded-md placeholder-[#DFB17E] bg-[#EADBC8] py-3 px-5 text-base text-[#0F2C59] outline-none focus:border-[#6A64F1] focus:shadow-md"
         self.fields['password1'].widget.attrs['placeholder'] = 'Password'
-        self.fields['password2'].widget.attrs['class'] = "w-[500px] rounded-md placeholder-[#DFB17E] bg-[#EADBC8] py-3 px-6 text-base font-['Prompt'] text-[#0F2C59] outline-none focus:border-[#6A64F1] focus:shadow-md"
+        self.fields['password2'].widget.attrs['class'] = "w-full rounded-md placeholder-[#DFB17E] bg-[#EADBC8] py-3 px-5 text-base text-[#0F2C59] outline-none focus:border-[#6A64F1] focus:shadow-md"
         self.fields['password2'].widget.attrs['placeholder'] = 'Confirm Password'
 
     email = forms.EmailField(max_length=100, required=True, widget=forms.EmailInput(attrs={
-        'class': 'w-[500px] rounded-md placeholder-[#DFB17E] bg-[#EADBC8] py-3 px-6 text-base font-["Prompt"] text-[#0F2C59] outline-none focus:border-[#6A64F1] focus:shadow-md',
+        'class': 'w-full rounded-md placeholder-[#DFB17E] bg-[#EADBC8] py-3 px-5 text-base text-[#0F2C59] outline-none focus:border-[#6A64F1] focus:shadow-md',
         'type': 'email',
         'placeholder': 'Email',
         }))
     displayname = forms.CharField(max_length=100, required=True, widget=forms.TextInput(attrs={
-        'class': 'w-[500px] rounded-md placeholder-[#DFB17E] bg-[#EADBC8] py-3 px-6 text-base font-["Prompt"] text-[#0F2C59] outline-none focus:border-[#6A64F1] focus:shadow-md',
+        'class': 'w-full rounded-md placeholder-[#DFB17E] bg-[#EADBC8] py-3 px-5 text-base text-[#0F2C59] outline-none focus:border-[#6A64F1] focus:shadow-md',
         'type': 'text',
         'placeholder': 'Display Name',
         }))

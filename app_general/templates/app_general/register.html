@@ -1,102 +1,74 @@
 {% extends "app_general/base.html" %} {% load static %} {% block body%}
 <!--  log in -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Prompt&display=swap"
-  rel="stylesheet"
-/>
 <body
-  class="flex items-center justify-center h-screen bg-[url('{% static 'src\sign-in.svg' %}')] bg-no-repeat bg-cover"
+  class="flex items-center justify-center min-h-screen bg-[url('{% static 'src\sign-in.svg' %}')] bg-no-repeat bg-cover font-['Prompt']"
 >
-  <div className="flex flex-col w-full items-center justify-center py-8">
-    <form
-      action="{% url 'register' %}"
-      method="post"
-      class="flex flex-col items-center justify-center w-full"
-    >
+  <div class="flex flex-col w-full items-center py-8">
+    <form action="{% url 'register' %}" method="post">
       {% csrf_token %} {{form.non_field_errors}}
 
-      <div class="Ellipse79 w-[120px] h-[120px] bg-zinc-300 rounded-full"></div>
+      
+      <div class="grid grid-rows-5 place-items-center">
+        <div class="w-1/3 py-10 bg-zinc-300 rounded-full"></div>
+        <div class="text-center text-blue-950 text-xl font-bold uppercase mt-2">
+          ลงทะเบียน
+        </div>
+        <!-- บัญชีผู้ใช้ -->
+        <div class="mb-4 w-2/3 md:w-full">
+          <label for="Username" class="mb-1 block text-base text-[#0F2C59]">
+            บัญชีผู้ใช้
+          </label>
+          {{form.username}} {{form.username.errors}}
+        </div>
 
-      <div
-        class="text-center text-blue-950 text-[25px] font-bold font-['Prompt'] uppercase"
-      >
-        ลงทะเบียน
-      </div>
+        <!-- ชื่อเล่น -->
+        <div class="mb-4 w-2/3 md:w-full">
+          <label for="Display Name" class="mb-1 block text-base text-[#0F2C59]">
+            ชื่อเล่น
+          </label>
+          {{form.displayname}} {{form.displayname.errors}}
+        </div>
 
-      <!-- บัญชีผู้ใช้ -->
-      <div class="mb-4">
-        <label
-          for="Username"
-          class="mb-1 block font-['Prompt'] text-base text-[#0F2C59]"
-        >
-          บัญชีผู้ใช้
-        </label>
-        {{form.username}} {{form.username.errors}}
-      </div>
+        <!-- อีเมล -->
+        <div class="mb-4 w-2/3 md:w-full">
+          <label for="email" class="mb-1 block text-base text-[#07074D]">
+            อีเมล
+          </label>
+          {{form.email}} {{form.email.errors}}
+        </div>
 
-      <!-- ชื่อเล่น -->
-      <div class="mb-4">
-        <label
-          for="Display Name"
-          class="mb-1 block font-['Prompt'] text-base text-[#0F2C59]"
-        >
-          ชื่อเล่น
-        </label>
-        <!-- <input
-                type="text"
-                placeholder="Display Name"
-                class="w-[500px] rounded-md placeholder-[#DFB17E] bg-[#EADBC8] py-3 px-6 text-base font-['Prompt'] text-[#0F2C59] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                /> -->
-        {{form.displayname}} {{form.displayname.errors}}
-      </div>
+        <!-- รหัสผ่าน -->
+        <div class="mb-4 w-2/3 md:w-full">
+          <label for="Password" class="mb-1 block text-base text-[#0F2C59]">
+            รหัสผ่าน
+          </label>
+          {{form.password1}} {{form.password1.errors}}
+        </div>
 
-      <!-- อีเมล -->
-      <div class="mb-4">
-        <label
-          for="email"
-          class="mb-1 block font-['Prompt'] text-base text-[#07074D]"
-        >
-          อีเมล
-        </label>
-        {{form.email}} {{form.email.errors}}
-      </div>
-
-      <!-- รหัสผ่าน -->
-      <div class="mb-4">
-        <label
-          for="Password"
-          class="mb-1 block font-['Prompt'] text-base text-[#0F2C59]"
-        >
-          รหัสผ่าน
-        </label>
-        {{form.password1}} {{form.password1.errors}}
-      </div>
-
-      <!-- ยืนยันรหัสผ่าน -->
-      <div class="mb-4">
-        <label
-          for="Confirm Password"
-          class="mb-1 block font-['Prompt'] text-base text-[#0F2C59]"
-        >
-          ยืนยันรหัสผ่าน
-        </label>
-        {{form.password2}} {{form.password2.errors}}
-      </div>
-      <div class="mb-4">
-        <input type="checkbox" id="policy" name="policy">
-        <a href="{% url 'policy' %}">
-        ฉันยอมรับข้อตกลงและเงื่อนไขตามนโยบายผู้รับผิดชอบข้อมูลและความเป็นส่วนตัว
-        </a>
-      </div>
-      <div>
-        <button
-          class="hover:shadow-form rounded-md bg-[#0F2C59] w-[217px] h-[57px] px-[23px] py-[7px] text-base font-semibold text-[#EADBC8] outline-none font-['Prompt']"
-          type="submit"
-        >
-          ยืนยันการลงทะเบียน
-        </button>
+        <!-- ยืนยันรหัสผ่าน -->
+        <div class="mb-4 w-2/3 md:w-full">
+          <label
+            for="Confirm Password"
+            class="mb-1 block text-base text-[#0F2C59]"
+          >
+            ยืนยันรหัสผ่าน
+          </label>
+          {{form.password2}} {{form.password2.errors}}
+        </div>
+        <div class="mb-4 w-1/2 text-sm md:w-full">
+          <input type="checkbox" id="policy" name="policy" />
+          <a href="{% url 'policy' %}" class="w-full underline overflow-clip">
+            ฉันยอมรับข้อตกลงและเงื่อนไขตามนโยบายผู้รับผิดชอบข้อมูลและความเป็นส่วนตัว
+          </a>
+        </div>
+        <div class="flex justify-center w-2/3 h-2/3 md:w-1/2">
+          <button
+            class="hover:shadow-form rounded-2xl bg-[#0F2C59] w-full px-7 py-4 font-semibold text-[#EADBC8] outline-none self-center text-sm sm:text-base"
+            type="submit"
+          >
+            ยืนยันการลงทะเบียน
+          </button>
+        </div>
       </div>
     </form>
   </div>

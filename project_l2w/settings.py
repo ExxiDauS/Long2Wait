@@ -94,6 +94,7 @@ DATABASES = {
         'PORT': '9004',
         'OPTIONS': {
             'charset': 'utf8mb4',
+            'use_unicode': True,
     }
 }
 }

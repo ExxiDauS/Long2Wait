@@ -1,3 +1,4 @@
+from typing import Any
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -18,11 +19,6 @@ class Customer(models.Model):
 
     def __str__(self):
         return self.name
-
-class Reservation(models.Model):
-    total_price = models.IntegerField()
-    created_at = models.DateTimeField(auto_now_add=True)
-    order = models.ForeignKey("app_general.Orders", on_delete=models.SET_NULL, null=True)
 
 # Product
 class Foods(models.Model):
@@ -49,11 +45,14 @@ class Orders(models.Model):
     date_ordered = models.DateTimeField(auto_now_add=True)
     completed = models.BooleanField(default=False)
     transaction_id = models.CharField(max_length=200, null=True)
-    price = models.IntegerField()
+    total_quantity = models.IntegerField(default=0, null=True, blank=True)
 
     def __str__(self):
         return str(self.id)
     
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        super().__init__(*args, **kwargs)
+
     @property
     def get_cart_total(self):
         orderitems = self.orderitem_set.all()
@@ -65,11 +64,11 @@ class Orders(models.Model):
         orderitems = self.orderitem_set.all()
         total = sum([item.quantity for item in orderitems])
         return total
-
+    
     @property
     def get_time(self):
-        orderitems = self.orderitem_set.all()
-        time = sum([item.quantity for item in orderitems]) * 5  
+        all_order = Orders.objects.all()
+        time = sum([item.total_quantity for item in all_order]) * 5
         return time
 
 # Cart
@@ -86,3 +85,12 @@ class OrderItem(models.Model):
     def get_total(self):
         total = self.foods.price * self.quantity
         return total
+
+# Reservation
+class Reservation(models.Model):
+    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
+    order = models.ForeignKey(Orders, on_delete=models.SET_NULL, null=True)
+    quantity = models.IntegerField(default=0, null=True, blank=True)
+
+    def __str__(self):
+        return str(self.id)

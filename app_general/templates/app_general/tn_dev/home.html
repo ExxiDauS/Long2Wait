@@ -2,40 +2,35 @@
 
 <!-- component -->
 <div
-  class="flex h-screen antialiased text-[#0F2C59] bg-[url('/static/src/BG.webp')] bg-cover dark:bg-dark dark:text-light"
+  class="flex h-screen text-[#0F2C59] bg-[url('/static/src/BG.webp')] bg-cover"
 >
-  {% include 'app_general/components/navbar.html' %}
-  <!--Shop -->
-  <div class="flex flex-col flex-1">
-    <div class="inline-block justify-center items-center h-screen">
-      <div class="flex justify-center items-center m-4 mt-16">
-        <a href="{% url 'home' %}">
-          <img class="w-60 h-60" src="{% static '/src/Logo.png' %}" />
-        </a>
-      </div>
-      <div
-        class="flex content justify-center items-center overscroll-x-auto space-x-12 mt-8">
-        <a href="{% url 'shop' %}">
-          <div class="flex-shrink-0 w-64 h-96 p-4">
-            <div
-              class="flex-shrink-0 w-64 h-96 scale-90 p-4 bg-white border-[16px] border-[#6783A6] rounded-full overflow-hidden shadow-md opacity-90 hover:opacity-100 hover:scale-100 hover:border-[#403F53] hover:shadow-2xl duration-300">
-              <img
-                src="{% static '/src/พี่ช้าง.png' %}"
-                class="w-full h-22 object-cover"
-              />
-              <div class="text-center">
-                <h2 class="text-xl font-semibold">พี่ช้าง</h2>
-                <h2>{{order.get_time}}</h2>
-                <p class="text-gray-600">
-                  ร้านอาหารเลื่องชื่อจากโรงอาหารของคณะไอทีด้วยรสชาติความอร่อยและคิวที่ยาวที่สุด!
-                </p>
-              </div>
+    {% include 'app_general/components/navbar.html' %}
+  <div class="flex flex-col w-full overflow-auto">
+
+    <a href="{% url 'home' %}" class="w-1/3 self-center mt-10 md:mt-5 sm:w-1/3 md:w-1/6">
+      <img src="{% static '/src/Logo.png' %}" />
+    </a>
+
+    <div class="flex h-3/5 justify-center">
+        <a href="{% url 'shop' %}" class="flex justify-center align-middle w-3/4 sm:w-2/5 md:w-2/5 lg:w-1/5">
+          <div
+            class="w-full scale-90 md:w-3/4 lg:w-10/12 p-4 bg-white border-[20px] border-[#6783A6] rounded-full shadow-md opacity-90 hover:opacity-100 hover:scale-100 hover:border-[#403F53] hover:shadow-2xl duration-300"
+          >
+            <img
+              src="{% static '/src/พี่ช้าง.png' %}"
+              class="w-full object-cover"
+            />
+            <div class="text-center text-sm overflow-auto">
+              <h2 class="text-xl font-semibold">พี่ช้าง</h2>
+              <h2>{{order.get_time}}</h2>
+              <p class="text-gray-600">
+                ร้านอาหารเลื่องชื่อจากโรงอาหารของคณะไอทีด้วยรสชาติความอร่อยและคิวที่ยาวที่สุด!
+              </p>
             </div>
           </div>
         </a>
-        <div class="flex-shrink-0 w-64 h-96 p-4">
-          <div
-            class="flex-shrink-0 w-64 h-96 scale-90 p-4 bg-slate-300 border-[16px] border-[#6783A6] rounded-full overflow-hidden shadow-md opacity-90 hover:opacity-100 hover:scale-100 hover:border-[#403F53] duration-300"
+        <div
+            class="w-64 h-96 scale-90 p-4 bg-slate-300 border-[16px] border-[#6783A6] rounded-full overflow-hidden shadow-md opacity-90 hover:opacity-100 hover:scale-100 hover:border-[#403F53] duration-300"
           >
             <img
               src="{% static '/src/พี่ฝน.png' %}"
@@ -48,48 +43,8 @@
               Coming Soon..
             </div>
           </div>
-        </div>
-        <div class="flex-shrink-0 w-64 h-96 p-4">
-          <div
-            class="flex-shrink-0 w-64 h-96 scale-90 p-4 bg-slate-300 border-[16px] border-[#6783A6] rounded-full overflow-hidden shadow-md opacity-90 hover:opacity-100 hover:scale-100 hover:border-[#403F53] duration-300"
-          >
-            <img
-              src="{% static '/src/วาสนา.png' %}"
-              alt="Card Image"
-              class="w-full h-22 object-cover"
-            />
-            <div
-              class="z-50 text-center justify-items-center text-2xl font-bold"
-            >
-              Coming Soon..
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
     </div>
   </div>
 </div>
-
-<script
-  src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js"
-  defer
-></script>
-<script>
-  const setup = () => {
-    return {
-      isSidebarOpen: false,
-      currentSidebarTab: null,
-      isSettingsPanelOpen: false,
-      isSubHeaderOpen: false,
-      watchScreen() {
-        if (window.innerWidth <= 1024) {
-          this.isSidebarOpen = false;
-        }
-      },
-    };
-  };
-</script>
 
 {% endblock body %}
