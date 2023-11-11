@@ -1,80 +1,168 @@
-{% extends "app_general/base.html" %} {% load static %} 
+{% extends "app_general/base.html" %} {% load static %} {% block body%}
 
-{% block body%} 
+<div
+  class="flex h-screen text-[#0F2C59] bg-[url('/static/src/BG.webp')] bg-cover"
+>
+  {% include 'app_general/components/navbar.html' %}
+  <div class="container mx-auto px-4 py-8">
+    <h1 class="text-2xl font-semibold mb-4">Shopping Cart</h1>
+    <div class="flex flex-col md:flex-row gap-4">
+      <div class="md:w-3/4">
+        <div class="bg-[#E8E4DE] rounded-lg shadow-md p-6 mb-4">
+          <table class="w-full">
+            <thead>
+              <tr>
+                <th class="text-left font-semibold">Product</th>
+                <th class="text-left font-semibold">Price</th>
+                <th class="text-left font-semibold">Quantity</th>
+                <th class="text-left font-semibold">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="py-4">
+                  <div class="flex items-center">
+                    <img
+                      class="h-16 w-16 mr-4"
+                      src="https://via.placeholder.com/150"
+                      alt="Product image"
+                    />
+                    <span class="font-semibold">Product name</span>
+                  </div>
+                </td>
+                <td class="py-4">$19.99</td>
+                <td class="py-4">
+                  <div class="flex items-center">
+                    <button class="border rounded-md py-2 px-4 mr-2">-</button>
+                    <span class="text-center w-8">1</span>
+                    <button class="border rounded-md py-2 px-4 ml-2">+</button>
+                  </div>
+                </td>
+                <td class="py-4">$19.99</td>
+              </tr>
+              <!-- More product rows -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="md:w-1/4">
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <h2 class="text-lg font-semibold mb-4">Summary</h2>
+          <div class="flex justify-between mb-2">
+            <span>Subtotal</span>
+            <span>$19.99</span>
+          </div>
+          <div class="flex justify-between mb-2">
+            <span>Taxes</span>
+            <span>$1.99</span>
+          </div>
+          <div class="flex justify-between mb-2">
+            <span>Shipping</span>
+            <span>$0.00</span>
+          </div>
+          <hr class="my-2" />
+          <div class="flex justify-between mb-2">
+            <span class="font-semibold">Total</span>
+            <span class="font-semibold">$21.98</span>
+          </div>
+          <button
+            class="bg-blue-500 text-white py-2 px-4 rounded-lg mt-4 w-full"
+          >
+            Checkout
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- {% for item in items %}
+  <img src="{{item.foods.imageURL}}" />
+  <p>{{item.foods.foods_name}}</p>
+  <p>${{item.foods.price|floatformat:2}}</p>
+  <p>{{item.quantity}}</p>
+  <p>${{item.get_total}}</p>
+  <button
+    data-product="{{item.foods.id}}"
+    data-action="add"
+    class="update-cart"
+  >
+    ADD
+  </button>
+  <button
+    data-product="{{item.foods.id}}"
+    data-action="remove"
+    class="update-cart"
+  >
+    DECREASE
+  </button>
+  <button
+    data-product="{{item.foods.id}}"
+    data-action="delete"
+    class="update-cart"
+  >
+    REMOVE
+  </button>
+  {% endfor %}
+  <p>{{order.get_cart_items}}</p>
+  <p>${{order.get_cart_total|floatformat:2}}</p>
+  <h2>{{order.get_time}}</h2>
+  <button id="cancel">cancel</button>
+  <button id="checkout">checkout</button> -->
 
-{% for item in items %}
-<img src="{{item.foods.imageURL}}">
-<p>{{item.foods.foods_name}}</p>
-<p>${{item.foods.price|floatformat:2}}</p>
-<p>{{item.quantity}}</p>
-<p>${{item.get_total}}</p>
-<button data-product="{{item.foods.id}}" data-action="add" class="update-cart">ADD</button>
-<button data-product="{{item.foods.id}}" data-action="remove" class="update-cart">DECREASE</button>
-<button data-product="{{item.foods.id}}" data-action="delete" class="update-cart">REMOVE</button>
-{% endfor %}
-<p>{{order.get_cart_items}}</p>
-<p>${{order.get_cart_total|floatformat:2}}</p>
-<h2>{{order.get_time}}</h2>
-<button id="cancel">cancel</button>
-<button id="checkout">checkout</button>
+  <script type="text/javascript">
+    var total = "{{order.get_cart_items}}";
 
-<script type="text/javascript">
-    var total = "{{order.get_cart_items}}"
+    document.getElementById("checkout").addEventListener("click", function (e) {
+      submitCheckout();
+    });
 
-    document.getElementById("checkout").addEventListener("click", function(e) {
-        submitCheckout()
-    })
+    document.getElementById("cancel").addEventListener("click", function (e) {
+      submitCancel();
+    });
 
-    document.getElementById("cancel").addEventListener("click", function(e) {
-        submitCancel()
-    })
+    var url = "/checkout/";
 
-    var url = "/checkout/"
-
-
-
-    function submitCheckout(){
-        console.log("checkout check")
-        fetch(url, {
+    function submitCheckout() {
+      console.log("checkout check");
+      fetch(url, {
         method: "POST",
         headers: {
-            "Content-Type": "application/json",
-            "X-CSRFToken": csrftoken,
+          "Content-Type": "application/json",
+          "X-CSRFToken": csrftoken,
         },
         body: JSON.stringify({
-            "total": total,
+          total: total,
         }),
-    })
-    .then((response) => {
-        response.json();
-    })
-    .then((data) => {
-        location.reload();
-        window.location.href = "{% url 'home' %}";
-    });
+      })
+        .then((response) => {
+          response.json();
+        })
+        .then((data) => {
+          location.reload();
+          window.location.href = "{% url 'home' %}";
+        });
     }
 
-    function submitCancel(){
-        console.log("cancel check")
-        fetch(url, {
+    function submitCancel() {
+      console.log("cancel check");
+      fetch(url, {
         method: "POST",
         headers: {
-            "Content-Type": "application/json",
-            "X-CSRFToken": csrftoken,
+          "Content-Type": "application/json",
+          "X-CSRFToken": csrftoken,
         },
         body: JSON.stringify({
-            "total": total,
+          total: total,
         }),
-    })
-    .then((response) => {
-        response.json();
-    })
-    .then((data) => {
-        location.reload();
-        window.location.href = "{% url 'home' %}";
-    });
+      })
+        .then((response) => {
+          response.json();
+        })
+        .then((data) => {
+          location.reload();
+          window.location.href = "{% url 'home' %}";
+        });
     }
-
-</script>
+  </script>
+</div>
 
 {% endblock body%}
