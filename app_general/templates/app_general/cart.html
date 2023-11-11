@@ -7,10 +7,10 @@
   <div class="container mx-auto px-4 py-8">
     <h1 class="text-2xl font-semibold mb-4">Shopping Cart</h1>
     <div class="flex flex-row gap-4">
-      {% for item in items %}
         <div class="md:w-3/4">
           <div class="bg-[#E8E4DE] rounded-lg shadow-md p-6 mb-4">
             <table class="w-full">
+              {% for item in items %}
               <thead>
                 <tr>
                   <th class="text-left font-semibold">Food</th>
@@ -43,10 +43,10 @@
                 </tr>
                 <!-- More product rows -->
               </tbody>
+              {% endfor %}
             </table>
           </div>
         </div>
-      {% endfor %}
       <div class="md:w-1/4">
         <div class="bg-white rounded-lg shadow-md p-6">
           <h2 class="text-lg font-semibold mb-4">Summary</h2>
@@ -63,11 +63,18 @@
             <span class="font-semibold">Total</span>
             <span class="font-semibold">฿{{order.get_cart_total|floatformat:2}}</span>
           </div>
-          <button
-            class="bg-blue-500 text-white py-2 px-4 rounded-lg mt-4 w-full"
-          >
-            Checkout
-          </button>
+          <div class="flex space-x-2">
+            <button
+              id="cancel" class="update-cart bg-red-500 text-white py-2 px-4 rounded-lg mt-4 w-1/2" data-product="{{item.foods.id}}" data-action="delete"
+            >
+              Cancel
+            </button>
+            <button
+              class="bg-blue-500 text-white py-2 px-4 rounded-lg mt-4 w-1/2" id="checkout"
+            >
+              Checkout
+            </button>
+          </div>
         </div>
       </div>
     </div>
