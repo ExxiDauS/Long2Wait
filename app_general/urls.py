@@ -19,7 +19,6 @@ urlpatterns = [
     
     # * User
     path('dashboard/', views.dashboard, name='dashboard'),
-    path('profile/', view=views.profile, name='profile'),
 
     path('update_item/', views.updateItem, name='update_item'),
 ]

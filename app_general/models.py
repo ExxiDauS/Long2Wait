@@ -54,10 +54,17 @@ class Orders(models.Model):
         super().__init__(*args, **kwargs)
 
     @property
-    def get_cart_total(self):
+    def get_cart_subtotal(self):
         orderitems = self.orderitem_set.all()
         total = sum([item.get_total for item in orderitems])
         return total
+    
+    @property
+    def get_cart_total(self):
+        orderitems = self.orderitem_set.all()
+        total = sum([item.get_total for item in orderitems])
+        taxes = sum([item.get_total for item in orderitems]) * 0.03
+        return total + taxes
     
     @property
     def get_cart_items(self):
@@ -70,7 +77,12 @@ class Orders(models.Model):
         all_order = Orders.objects.all()
         time = sum([item.total_quantity for item in all_order]) * 5
         return time
-
+    
+    @property
+    def get_taxes(self):
+        orderitems = self.orderitem_set.all()
+        taxes = sum([item.get_total for item in orderitems]) * 0.03
+        return taxes
 # Cart
 class OrderItem(models.Model):
     foods = models.ForeignKey(Foods, on_delete=models.SET_NULL, null=True)
