@@ -7,35 +7,48 @@
 
   <div class="flex flex-col flex-1 w-full">
     <div class="flex justify-center mt-5 text-center">
-      <div class="font-bold text-2xl h-1/5">ร้านพี่ช้าง
-        <div class="w-1/5 h-60">
-          <img src="{% static '/src/พี่ช้าง.png' %}" alt="p'chang" />
+      <div class="font-bold text-2xl h-1/5">
+        ร้านพี่ช้าง
+        <div class="justify-center">
+          <img
+            class="w-68 h-72"
+            src="{% static '/src/พี่ช้าง.png' %}"
+            alt="p'chang"
+          />
         </div>
       </div>
     </div>
     <div class="font-semibold text-2xl pl-5 mb-5 ml-5">เมนู</div>
-    <div class="grid grid-cols-4 mt-6 m-4 overflow-auto">
+    <div class="grid grid-cols-4 mt-6 m-4 overflow-y-auto">
       {% for food in foods %}
-        <div class="flex flex-col items-center justify-center">
-          <img src="{{food.imageURL}}" class="w-1/2 h-1/2 opacity-90 rounded-2xl" />
-          <h4 class="w-1/2 text-right items-end">
-            <div class="text-zinc-100">
-              <strong class="bg-[#0F2C59] p-2 py-3 border-white border-2 rounded-full text-xs">{{food.price}} ฿</strong>
-            </div>
-          </h4>
-          <h6 class="w-1/2 text-center"><strong>{{food.foods_name}}</strong></h6>
-          <div class="w-1/2 text-center">
-            <button
-              data-product="{{food.id}}"
-              data-action="add"
-              class="update-cart underline"
+      <div class="flex flex-col items-center justify-center">
+        <img
+          src="{{food.imageURL}}"
+          class="z-10 w-1/2 h-1/2 opacity-90 rounded-2xl"
+        />
+        <h4 class="z-50 w-1/2 text-right items-end">
+          <div class="text-zinc-100">
+            <strong
+              class="bg-[#0F2C59] p-2 py-3 border-white border-2 rounded-full text-xs"
+              >{{food.price}} ฿</strong
             >
-              Add to cart
-            </button>
           </div>
+        </h4>
+        <h6 class="w-1/2 text-center"><strong>{{food.foods_name}}</strong></h6>
+        <div class="w-1/2 text-center">
+          <button
+            data-product="{{food.id}}"
+            data-action="add"
+            class="update-cart underline"
+          >
+            Add to cart
+          </button>
         </div>
+      </div>
       {% endfor %}
     </div>
-</div>
+  </div>
 
-{% endblock body%}
+
+  {% endblock body%}
+</div>
