@@ -15,7 +15,7 @@ Set up the project environment with [virtualenv] and [pip](https://pip.pypa.io).
 ```bash
 $ python -m venv env
 $ env\Scripts\activate
-$ pip install -r requirements.txt
+$ pip install -r requirement.txt
 
 # To start the project.
 
