@@ -75,7 +75,7 @@ class Orders(models.Model):
     @property
     def get_time(self):
         all_order = Orders.objects.all()
-        time = sum([item.total_quantity for item in all_order]) * 5
+        time = (sum([item.total_quantity for item in all_order]) * 5) * 60000
         return time
     
     @property

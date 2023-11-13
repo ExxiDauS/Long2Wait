@@ -98,7 +98,7 @@
     </div>
   </div>
 
-  <script type="text/javascript">
+<script type="text/javascript">
     var total = "{{order.get_cart_items}}";
 
     document.getElementById("checkout").addEventListener("click", function (e) {
@@ -122,13 +122,14 @@
         body: JSON.stringify({
           total: total,
         }),
-      }).then((response) => {
-        response.json();
-      });
-      //.then((data) => {
-      //location.reload();
-      //window.location.href = "{% url 'home' %}";
-      //});
+      })
+        .then((response) => {
+          response.json();
+        })
+        .then((data) => {
+          location.reload();
+          window.location.href = "{% url 'home' %}";
+        });
     }
 
     function submitCancel() {
@@ -142,20 +143,21 @@
         body: JSON.stringify({
           total: total,
         }),
-      }).then((response) => {
-        response.json();
-      });
-      //.then((data) => {
-      //location.reload();
-      //window.location.href = "{% url 'home' %}";
-      //});
+      })
+        .then((response) => {
+          response.json();
+        })
+        .then((data) => {
+          location.reload();
+          window.location.href = "{% url 'home' %}";
+        });
     }
   </script>
 </div>
 
 <!-- cancel modal -->
 
-<div
+<!-- <div
   class="relative z-10 hidden"
   aria-labelledby="modal-title"
   role="dialog"
@@ -230,13 +232,13 @@
     modal.style.display = "none";
     backdrop.style.display = "none";
   });
-</script>
+</script> -->
 
 <!-- checkout modal -->
 
 <!-- cancel modal -->
 
-<div
+<!-- <div
   class="relative z-10 hidden"
   aria-labelledby="modal-title"
   role="dialog"
@@ -311,6 +313,6 @@
     modal.style.display = "none";
     backdrop.style.display = "none";
   });
-</script>
+</script> -->
 
 {% endblock body%}

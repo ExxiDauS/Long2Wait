@@ -15,7 +15,10 @@ import json
 # * Landing + Signin (Users)
 # Landing page
 def landing(request):
-    return render(request, 'app_general/nk_dev/landing.html')
+    if request.user.is_authenticated:
+        return HttpResponseRedirect(reverse("home"))
+    else:
+        return render(request, 'app_general/nk_dev/landing.html')
 
 # Login page
 def login(request: HttpRequest):
@@ -149,7 +152,12 @@ def history(request):
 # Main profile page
 @login_required
 def dashboard(request: HttpRequest):
-    return render(request, 'app_general/dashboard.html')
+    if request.user.is_authenticated:
+        user = request.user
+    else:
+        user = {'username' : 'Username', 'nickname' : 'Nickname', 'email': 'Email'}
+    context = {'user': user}
+    return render(request, 'app_general/dashboard.html', context)
 
 # Edit profile
 @login_required
