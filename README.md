@@ -8,7 +8,7 @@ Clone this repository on your computer.
 git clone https://github.com/ExxiDauS/Long2Wait.git
 ```
 
-Look for the the file name env.txt and change that file name to .env.
+Look for the the file name project_l2w/env and change that file name to .env.
 
 Set up the project environment with [virtualenv] and [pip](https://pip.pypa.io).
 
